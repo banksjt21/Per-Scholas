@@ -1,0 +1,111 @@
+
+
+
+/*  Tags  */
+body {
+    position: relative;
+    font-family: sans-serif;
+    text-align: center;
+    background-color: rgb(253, 244, 227);
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul li a {
+    font-style: normal;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 28px;
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 22px;
+}
+
+p {
+    font-size: 15px;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    list-style-type: none;
+    font-style: italic;
+}
+
+a {
+    color: purple;
+}
+
+table, th, td {
+    border: 1px solid;
+}
+
+
+
+
+/*  IDs  */
+#turtles {
+    font-weight: bold;
+    color: green;
+}
+
+
+
+
+/*  Classes  */
+.container {
+    position: static;
+    max-width: 600px;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.my-img {
+    border-radius: 50%;
+}
+
+.margin-top-40 {
+    display: block;
+    margin-top: 40px;
+}
+
+.img-linkedin {
+    max-width: 100px;
+}
+
+.img-turtle {
+    position: static;
+    height: 80px;
+    width: 80px;
+}
+
+.leo {
+    color: blue;
+}
+
+.mikey {
+    color: orange;
+}
+
+.raph {
+    color: red;
+}
+
+.donnie {
+    color: purple;
+}
+
