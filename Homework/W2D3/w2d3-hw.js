@@ -11,16 +11,12 @@
 ===========================================================================  */
 // This is the Governor from The Walking Dead
 class Governor {
+    // add static methods and properties you'd expect a Governor to have
     static age      = 36;
     static behavior = "evil";
 
-    static removeCharacterFromShow() {
-        return "You are the weakest link. Goodbye";
-    }
-
-    static takeOverBase() {
-        return "Your home is now my home.";
-    }
+    static removeCharacterFromShow() { return "You are the weakest link. Goodbye"; }
+    static takeOverBase()            { return "Your home is now my home."; }
 }
 
 //  Log the properties 
@@ -69,24 +65,14 @@ class Person {
 
 // Create a PostalWorker class that inherits from person, add some methods
 class PostalWorker extends Person {
-    deliverMail() {
-        console.log(`I'm going to deliver mail today.`);
-    }
-
-    pickupMail() {
-        console.log("I will pickup mail after I'm finished delivering.");
-    }
+    deliverMail() { console.log(`I'm going to deliver mail today.`); }
+    pickupMail()  { console.log("I will pickup mail after I'm finished delivering."); }
 }
 
 // Create a Chef class that inherits from person, add some methods
 class Chef extends Person {
-    cookMeal() {
-        console.log("I will cook your favorite dish!");
-    }
-
-    buyIngredients() {
-        console.log("I need to go to the store to purchase the ingredients first.");
-    }
+    cookMeal()       { console.log("I will cook your favorite dish!"); }
+    buyIngredients() { console.log("I need to go to the store to purchase the ingredients first."); }
 }
 
 // Create 2 PostalWorkers and 2 Chefs
