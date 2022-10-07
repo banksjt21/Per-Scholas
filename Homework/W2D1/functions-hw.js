@@ -258,6 +258,19 @@ const longestStringInArray = function(args) {
 console.log("8a: " + longestStringInArray(["First", "Second", "Fifth", "Seventh", "Fourteenth"]));
 
 
+const longestStringInArrayB = function(arrayOfNums) {
+    let longest = 0;
+
+    for(let x = 0; x < arrayOfNums.length; x++) {
+        if(arrayOfNums[x].length > longest) {
+            longest = arrayOfNums[x].length;
+        }
+    }
+
+    return longest;
+
+}
+console.log("8b: " + longestStringInArrayB(["First", "Second", "Fifth", "Seventh", "Fourteenth"]));
 
 
 /*  ========================================================================= *
