@@ -97,41 +97,114 @@ console.log("=====================================================\n\n\n\n");
 ===========================================================================  */
 class Pirate {
     // create 3 properties that are set by the constructor
-    constructor([nameOfShip, colorOfShip, numOfCrewMembers]) {
-        this.shipName       = nameOfShip;
-        this.shipColor      = colorOfShip;
-        this.shipPopulation = numOfCrewMembers;
+    constructor(nameOfPirate, yearsOnShip, favoriteColor) {
+        this.name  = nameOfPirate;
+        this.years = yearsOnShip;
+        this.color = favoriteColor;
     }
 
     // create 3 methods
-    rowForward()  { console.log("Aye matey ... Keep moving forward!!!");}
-    rowBackward() { console.log("Ahoy ... Backwards we go!!!");}
-    rowStop()     { console.log("Why did we stop rowing?!?!? Arghh!!!");}
+    yell() {
+        console.log("Arrrrggghhh!!!!");
+    }
+    sayAge() {
+        console.log(`I've been on this ship for ${this.years} years.`);
+    }
+    sayColor() {
+        console.log(`My favorite color is ${this.color}!`);
+    }
 }
 
-const shipOne = ["Jolly Roger", "black", 22];
-const shipTwo = ["Black Pearl", "red",   29];
+// instantiate 2 arrays of 3 pirates, name the arrays after your favorite pirate ships, jollyRoger and blackPearl
+const jollyRoger = [];
+const blackPearl = [];
 
-// instantiate 2 arrays of 3 pirates, name the arrays after your favorite pirate ships, 
-// jollyRoger and blackPearl
-const jollyRoger = new Pirate(shipOne);
-const blackPearl = new Pirate(shipTwo);
+jollyRoger[0] = new Pirate("Pirate One",   4, "black");
+jollyRoger[1] = new Pirate("Pirate Two",   2, "red");
+jollyRoger[2] = new Pirate("Pirate Three", 7, "pink");
+
+blackPearl[0] = new Pirate("Pirate Four",  9, "turquoise");
+blackPearl[1] = new Pirate("Pirate Five",  3, "blue");
+blackPearl[2] = new Pirate("Pirate Six",   5, "orange");
+
+
+// loop over each array and print 3 properties of each pirate (forEach)
+const pirateShips = [jollyRoger, blackPearl];
 
 console.log("\n=====================================================");
-console.log("create two instances of the Pirate class");
+console.log("Pirates of JavaScript");
 console.log("=====================================================");
-console.log(jollyRoger);
-console.log(blackPearl);
-console.log("=====================================================\n");
 
-// loop over each array and print 3 properties of each pirate
-let arrayOfShips = [jollyRoger, blackPearl];
+pirateShips.forEach(function(ship) {
+    for(let x = 0; x < ship.length; x++) {
+        console.log(ship[x]);
+    }
+});
 
-arrayOfShips.forEach(function(ship) {
-    console.log(ship)
-})
+console.log("=====================================================");
 
-// looping thru the object
-// for(const shipProperty in jollyRoger) {
-//     console.log(jollyRoger[shipProperty]);
+// loop over each array and print 3 properties of each pirate (for)
+// for(let a = 0; a < jollyRoger.length; a++) {
+//     console.log(jollyRoger[a]);
 // }
+
+// for(let b = 0; b < blackPearl.length; b++) {
+//     console.log(blackPearl[b]);
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// =========================================================
+// class Pirate {
+//     // create 3 properties that are set by the constructor
+//     constructor([nameOfShip, colorOfShip, numOfCrewMembers]) {
+//         this.shipName       = nameOfShip;
+//         this.shipColor      = colorOfShip;
+//         this.shipPopulation = numOfCrewMembers;
+//     }
+
+//     // create 3 methods
+//     rowForward()  { console.log("Aye matey ... Keep moving forward!!!");}
+//     rowBackward() { console.log("Ahoy ... Backwards we go!!!");}
+//     rowStop()     { console.log("Why did we stop rowing?!?!? Arghh!!!");}
+// }
+
+// const shipOne = ["Jolly Roger", "black", 22];
+// const shipTwo = ["Black Pearl", "red",   29];
+
+// // instantiate 2 arrays of 3 pirates, name the arrays after your favorite pirate ships, 
+// // jollyRoger and blackPearl
+// const jollyRoger = new Pirate(shipOne);
+// const blackPearl = new Pirate(shipTwo);
+
+// console.log("\n=====================================================");
+// console.log("create two instances of the Pirate class");
+// console.log("=====================================================");
+// console.log(jollyRoger);
+// console.log(blackPearl);
+// console.log("=====================================================\n");
+
+// // loop over each array and print 3 properties of each pirate
+// let arrayOfShips = [jollyRoger, blackPearl];
+
+// arrayOfShips.forEach(function(ship) {
+//     console.log(ship)
+// });
+
+// // looping thru the object
+// // for(const shipProperty in jollyRoger) {
+// //     console.log(jollyRoger[shipProperty]);
+// // }
