@@ -242,7 +242,7 @@ console.log("7b: " + reverseStringB("Hello Hola"));
     takes an array of strings as an argument and returns the length of the 
     longest string.
  *  ======================================================================== */
-//  8. Array with forEach
+//  8a. Array with forEach loop
 const longestStringInArray = function(args) {
     let longest = 0;
 
@@ -258,6 +258,7 @@ const longestStringInArray = function(args) {
 console.log("8a: " + longestStringInArray(["First", "Second", "Fifth", "Seventh", "Fourteenth"]));
 
 
+// 8b. Array with for loop
 const longestStringInArrayB = function(arrayOfNums) {
     let longest = 0;
 
