@@ -140,13 +140,17 @@ priyanka.setHair('black')
 class SuperHero extends Character {
     // ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
     // You will get this error above if you include a constructor method without including the super() that references back to the parent class
-    constructor (name, age, eyes, hair) {
+    constructor (name, age, eyes, hair, skills = ['Read minds']) {
         super(name, age, eyes, hair)
-        this.skills = [["thievery", "speed", "willpower"]]
+        this.skills = skills
     }
 
     fly() {
         console.log('Hey, I am flying...WOOO!')
+    }
+
+    addSkill(skill) {
+        this.skills.push(skill)
     }
 
     // Method overriding: needs to be the exact same name of the method from the parent class
@@ -199,6 +203,13 @@ console.log(julia)
 
 julia.greet('Marcus')
 
+// julia.name = 'Madrouna'
+
+// console.log(julia.name)
+
+julia.addSkill('Invisibility')
+console.log(julia.skills)
+
 
 
 
@@ -228,4 +239,4 @@ const shredder = new Villian("Shredder", 32, "black", "none", false, false);
 console.log(shredder);
 shredder.evilLaugh();
 shredder.smite();
-// shredder.runAway();
+shredder.runAway();

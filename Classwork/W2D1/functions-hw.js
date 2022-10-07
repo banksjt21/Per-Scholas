@@ -52,6 +52,24 @@ console.log("2a: " + maxOfThree(26, 47, 10));
 
 
 
+//  2b. If/ElseIf/Else Statement
+const maxOfThreeB = function(a, b, c) {
+    let largest;
+    if(a >= b) {
+        largest = a;
+    } else if (b >= c) {
+        largest = b;
+    } else {
+        largest = c;
+    }
+
+    return largest;
+}
+console.log("2b: " + maxOfThreeB(24, 5, 55));
+
+
+
+
 /*  ========================================================================= *
     3. Define a function, as a function declaration, isCharAVowel that takes a 
     character as an argument and returns true if it is a vowel, false otherwise.
@@ -105,8 +123,8 @@ console.log("3b: " + isCharAVowelB("a"));
     of numbers and returns the sum of those numbers. 
     For example, sumArray([2, 4, 5]); would return 11.
  *  ======================================================================== */
-//  4a. Array with forEach
-const sumArray = function(...nums) {
+//  4a. Array with forEach loop
+const sumArray = function(nums) {
     let sum = 0;
 
     nums.forEach(function(num) {
@@ -115,7 +133,20 @@ const sumArray = function(...nums) {
 
     return sum;
 }
-console.log("4a: " + sumArray(5, 4, 3, 2, 1));
+console.log("4a: " + sumArray([5, 4, 3, 2, 1]));
+
+
+// 4b. Array with for loop
+const sumArrayB = function(nums) {
+    let sum = 0;
+
+    for (let x = 0; x < nums.length; x++) {
+        sum += nums[x]
+    }
+
+    return sum;
+}
+console.log("4b: " + sumArrayB([5, 4, 3, 2, 1]));
 
 
 
@@ -125,8 +156,8 @@ console.log("4a: " + sumArray(5, 4, 3, 2, 1));
     an array of numbers and returns the product of those numbers. 
     For example, multiplyArray([2, 4, 5]); would return 40.
  *  ======================================================================== */
-//  5a. Array with forEach
-function multiplyArray(...nums) {
+//  5a. Array with forEach loop
+function multiplyArray(nums) {
     let product = 1;
 
     nums.forEach(function(num) {
@@ -135,7 +166,20 @@ function multiplyArray(...nums) {
 
     return product;
 }
-console.log("5a: " + multiplyArray(5, 4, 3, 2, 1));
+console.log("5a: " + multiplyArray([5, 4, 3, 2, 1]));
+
+
+//  5b. Array with for loop
+function multiplyArrayB(nums) {
+    let product = 1;
+
+    for(let x = 0; x < nums.length; x++) {
+        product *= nums[x];
+    }
+
+    return product;
+}
+console.log("5b: " + multiplyArrayB([5, 4, 3, 2, 1]));
 
 
 
@@ -150,6 +194,12 @@ const numArgs = function(...args) {
 }
 console.log("6a: " + numArgs(1, 2, 3, 4, 5));
 
+
+//  6b. Array Length using arguments.length
+const numArgsB = function(...args) {
+    return arguments.length;
+}
+console.log("6b: " + numArgsB(1, 2, 3, 4, 5));
 
 
 
@@ -172,6 +222,19 @@ function reverseString(str) {
 console.log("7a: " + reverseString("Hello Hola"));
 
 
+//  7b. string with for loop
+function reverseStringB(str) {
+    let reversed = "";
+    
+    for (let i = str.length - 1; i >= 0; i--) {
+        reversed += str[i];
+    }
+
+    return reversed;
+}
+console.log("7b: " + reverseStringB("Hello Hola"));
+
+
 
 
 /*  ========================================================================= *
@@ -180,7 +243,7 @@ console.log("7a: " + reverseString("Hello Hola"));
     longest string.
  *  ======================================================================== */
 //  8. Array with forEach
-const longestStringInArray = function(...args) {
+const longestStringInArray = function(args) {
     let longest = 0;
 
     args.forEach((str) => {
@@ -192,7 +255,7 @@ const longestStringInArray = function(...args) {
 
     return longest;
 }
-console.log("8a: " + longestStringInArray("First", "Second", "Fifth", "Seventh", "Fourteenth"));
+console.log("8a: " + longestStringInArray(["First", "Second", "Fifth", "Seventh", "Fourteenth"]));
 
 
 
@@ -204,7 +267,7 @@ console.log("8a: " + longestStringInArray("First", "Second", "Fifth", "Seventh",
     For example, stringsLongerThan(['say', 'hello', 'in', 'the', 'morning'], 3);
     would return ["hello", "morning"].
  *  ======================================================================== */
-//  9a. Array with forEach and spread operator
+//  9a. Array with forEach and spread operator (not passing in array)
 function stringsLongerThan(num, ...args) {
     const keptStrings = [];
 
