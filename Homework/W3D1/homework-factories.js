@@ -128,22 +128,16 @@ class Dinner {
         this.entree    = entreeParam;
         this.dessert   = dessertParm;
     }
-
-    addToPlate() {
-        const dish = [this.appetizer, this.entree, this.dessert];
-        return dish;
-    }
-
 }
 
 class Chef {
     makeDinner(appetizerOrdered, entreeOrdered, dessertOrdered) {
         const dinner = new Dinner(appetizerOrdered, entreeOrdered, dessertOrdered);
-        console.log(dinner);
+        return dinner;
     }
 }
 
 const sam = new Chef();
-sam.makeDinner("soup", "salad", "breadsticks");
-sam.makeDinner("pancakes", "sausage", "bacon");
-sam.makeDinner("skittles", "snickers", "nerds+");
+console.log(sam.makeDinner("soup", "salad", "breadsticks"));
+console.log(sam.makeDinner("pancakes", "sausage", "eggs"));
+console.log(sam.makeDinner("skittles", "snickers", "nerds"));
