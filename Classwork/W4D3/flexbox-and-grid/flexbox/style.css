@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  nav {
+    display: flex;
+    height: 50px;
+    background-color: #a2cbb6;
+    /* flex-direction: row;  */
+    /* row- the default
+        row-reverse
+        column
+        column-reverse */
+    justify-content: flex-start;
+  }
+  /* justify-content: main axis
+  align-items: cross axis */
+  
+  nav > div {
+    font-size: 20px;
+    margin: 10px;
+    color: #f3dba8;
+    border: 2px solid black
+  }
+  
+  nav > div:last-child {
+    margin-left: auto
+  }
+  
+  
+  /* 
+  Review Questions - Flexbox
+  ❓ When an element has a CSS property of display: flex;, that element becomes a flex __. container
+  
+  ❓ When an element has a CSS property of display: flex;, its direct children become flex __. items
+  
+  ❓ What value is the default for the flex-direction property?
+    row is the default value
+  
+  ❓ Is it justify-content or align-items that controls the alignment along the cross axis?
+    justify-content: Controls alignment for the main axis
+  
+    align-items: Controls alignment for the cross axis
+   */
+  
+  
+  .wrapper {
+    height: 80vh;
+    border: 2px solid black;
+    display: flex;
+  }
+  
+  .wrapper > * {
+    border: 2px solid black;
+    height: 100%;
+  }
+  
+  aside {
+    width: 25%;
+  }
+  
+  main {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  main > *  {
+    height: 32.5%;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center
+  }
+  
+  aside {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    height: 100%
+  }
+  
+  aside > * {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+  }

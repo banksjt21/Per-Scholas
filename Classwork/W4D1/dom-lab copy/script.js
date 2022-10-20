@@ -173,6 +173,7 @@ function handleClick(evt) {
     });
     console.log(linkObj);
 
+  
     // buildSubMenu function
     function buildSubMenu(linkObj) {
       subMenuEl.innerHTML = "";
@@ -183,28 +184,28 @@ function handleClick(evt) {
         link.textContent = currentLink.text;
         subMenuEl.append(link);
       });
-
-      subMenuEl.addEventListener("click", function(evt2) {
-        evt2.preventDefault();
-
-        if(evt2.target.matches("a") ) {
-          console.log(evt2.target)
-        } else {
-          return;
-        }
-
-        showingSubMenu = false;
-        subMenuEl.style.top = "0";
-
-        let aLinksAgain = document.querySelectorAll("#top-menu > a");
-        aLinksAgain.forEach(function(elem) {
-            elem.classList.remove("active");
-        });
-
-        mainEl.innerHTML = `<h1>${evt2.target.textContent}</h1>`;
-
-      },{once : true});
     }
+
+    subMenuEl.addEventListener("click", function(evt2) {
+      evt2.preventDefault();
+
+      if(evt2.target.matches("a") ) {
+        console.log(evt2.target)
+      } else {
+        return;
+      }
+
+      showingSubMenu = false;
+      subMenuEl.style.top = "0";
+
+      let aLinksAgain = document.querySelectorAll("#top-menu > a");
+      aLinksAgain.forEach(function(elem) {
+          elem.classList.remove("active");
+      });
+
+      mainEl.innerHTML = `<h1>${evt2.target.textContent}</h1>`;
+
+    },{once : true});
 
     // 5.6 - Set showingSubMenu to true if the clicked <a> element's "link" object within menuLink shas a subLinks property (all do, except for the "link" object for ABOUT), otherwise, set it to false.
     if(evt.target.getAttribute('href') === "#") {
