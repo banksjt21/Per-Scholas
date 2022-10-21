@@ -116,7 +116,7 @@ function handleClick(evt) {                             // 5.2b
 
                 mainEl.innerHTML = `<h1>${subMenuClickedLink.textContent}</h1>`;    // 6.3
             }
-        });
+        }, {once : true});
 
 
         let linkObj = menuLinks.find(function(aLinkObj) {         // 5.6b
