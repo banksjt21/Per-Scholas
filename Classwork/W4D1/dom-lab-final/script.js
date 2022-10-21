@@ -1,3 +1,5 @@
+//  DOM Menu Lab
+//  https://perscholas.instructure.com/courses/1138/assignments/232771
 
 
 //  TASKS 1
@@ -87,7 +89,6 @@ function handleClick(evt) {                             // 5.2b
         clickedLink.classList.add('active');            // 5.5
 
 
-
         function buildSubMenu(linkObject) {                     // 5.7.1b
             subMenuEl.innerHTML = '';                           // 5.8.1
             linkObject.subLinks.forEach(function(subLinkObj) {  // 5.8.2
@@ -99,6 +100,9 @@ function handleClick(evt) {                             // 5.2b
         }
 
 
+
+
+        //  TASKS 6
         subMenuEl.addEventListener('click', function(subLinkEvt) {  // 6.0.1
             subLinkEvt.preventDefault();                            // 6.0.2
             let subMenuClickedLink = subLinkEvt.target;
@@ -116,7 +120,7 @@ function handleClick(evt) {                             // 5.2b
 
                 mainEl.innerHTML = `<h1>${subMenuClickedLink.textContent}</h1>`;    // 6.3
             }
-        }, {once : true});
+        }, {once: true});
 
 
         let linkObj = menuLinks.find(function(aLinkObj) {         // 5.6b
@@ -135,14 +139,9 @@ function handleClick(evt) {                             // 5.2b
             subMenuEl.style.top = '0';                  // 5.7.2b
         }
 
-
-
-
-
     }
     
     mainEl.innerHTML = `<h1>${clickedLink.textContent}</h1>`;   // 6.4
 }
-
 
 topMenuEl.addEventListener('click', handleClick);       // 5.2a

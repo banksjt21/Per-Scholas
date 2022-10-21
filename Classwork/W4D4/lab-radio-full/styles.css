@@ -1,0 +1,38 @@
+
+
+#radioContainer {
+    background-color:blueviolet;
+    width: 650px;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#changeStationButton {
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+#changeStationButton:hover {
+    background-color:violet
+}
+
+#changeStationButton:active {
+    background-color: fuchsia;
+}
+
+#stationName, #nowPlaying {
+    font-size: 19px;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
