@@ -83,7 +83,7 @@ const myStations = [                            // <-- 'myStations' array
 // create new radio object
 const myRadio = new Radio(myStations);
 
-// call the 'changeStation' method and out it to the console
+// call the 'changeStation' method and output it to the console
 console.log(myRadio.changeStation());
 
 

@@ -16,6 +16,8 @@ function shortenTitle() {
 }
 shortenTitle();
 
+
+
 // Part 2
 function changeBodyColor() {
   let bodyEl = document.querySelector('body');              // 2.0
@@ -23,12 +25,16 @@ function changeBodyColor() {
 }
 changeBodyColor();
 
+
+
 // Part 3
 function removeLastFavThing() {
   let favThingsEl = document.getElementById('favorite-things');  // 3.0
   favThingsEl.lastElementChild.remove();                         // 3.1
 }
 removeLastFavThing();
+
+
 
 // Part 4
 function changeSpecialTitleSize() {
@@ -38,6 +44,8 @@ function changeSpecialTitleSize() {
 });
 };
 changeSpecialTitleSize();
+
+
 
 // Part 5
 function removeChicago() {
@@ -51,6 +59,8 @@ function removeChicago() {
 
 }
 removeChicago();
+
+
 
 // Part 6
 function addMiami() {
@@ -84,6 +94,8 @@ function createBlogPost(newLiElment) {
 }
 createBlogPost(newLiElement);
 
+
+
 // Part 8
 function getRandomQuote() {
   const randomQuote = function() {
@@ -116,9 +128,3 @@ function addMouseEvents() {
 }
 addMouseEvents()
 
-
-
-
-
-// node list is static (querySelector)
-// html collection is dynamic (getElementBy)

@@ -139,6 +139,25 @@ function handleClick(evt) {                             // 5.2b
             subMenuEl.style.top = '0';                  // 5.7.2b
         }
 
+
+        // // Alternative for 5.6b
+        // // ==================================
+        // for(let x = 0; x < menuLinks.length; x++) {
+        //     if(clickedLink.textContent === menuLinks[x].text) {
+        //         showingSubMenu = menuLinks[x].hasOwnProperty('subLinks');
+        //         linkObj = menuLinks[x];
+        //     };
+        // }
+        // console.log(linkObj);
+
+        // if(showingSubMenu === true) {
+        //     buildSubMenu(linkObj);
+        //     subMenuEl.style.top = '100%';
+        // } else {
+        //     subMenuEl.style.top = '0';
+        // }
+        // // ==================================
+
     }
     
     mainEl.innerHTML = `<h1>${clickedLink.textContent}</h1>`;   // 6.4
