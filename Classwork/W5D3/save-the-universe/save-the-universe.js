@@ -146,9 +146,9 @@ const game = {
         currentShip = this.shipGroup.shift();
 
         // if no more ships left, currentShip is 'undefined'
-        if(!this.currentShip) {
-            console.log("You have no more ships left.");
-        }
+        // if(!currentShip) {
+        //     console.log("You have no more ships left.");
+        // }
         console.log(currentShip);
 
 
@@ -156,61 +156,106 @@ const game = {
         currentAlien = this.alienGroup.shift();
 
         // if no more aliens left, currentAlien is 'undefined'
-        if(!this.currentAlien) {
-            console.log("There are no more aliens left.");
-        }
+        // if(!currentAlien) {
+        //     console.log("There are no more aliens left.");
+        // }
         console.log(currentAlien);
     },
+
+    // getNextShip() {
+    //     this.currentShip = this.shipGroup.shift();
+    // },
+
+    // getNextAlien() {
+    //     this.currentAlien = this.alienGroup.shift();
+    // },
 
 
     // battle logic for the current actors
     duel() {
-        
-        // while(this.currentShip === true && this.currentAlien === true) {
+    
+            // keep running this loop while the ship's hull is than 0
+            while(currentShip.hull > 0) {
 
-        // }
+                // ship attacks first
+                if(randomizer() < currentShip.accuracy) {
+                    console.log(`You landed an attack for ${currentShip.firepower} damage`);
+                    currentAlien.hull -= currentShip.firepower;
+                    console.log(`... Alien has ${currentAlien.hull} remaining`);
+                } else {
+                    console.log("You missed the attack ...");
+                }
 
-        // keep running this loop while the ship's hull is than 0
-        while(currentShip.hull > 0) {
+                // check the alien's hull
+                if(currentAlien.hull <= 0) {
+                    console.log("------------------------------");
+                    console.log("Hurray!!! You destroyed the evil alien! ☺☺☺");
+                    this.victor = currentShip;
+                    console.log(`Your ship had ${this.victor.hull} hull remaining.`);
+                    break;
+                }
 
-            // ship attacks first
-            if(randomizer() < currentShip.accuracy) {
-                console.log(`You landed an attack for ${currentShip.firepower} damage`);
-                currentAlien.hull -= currentShip.firepower;
-                console.log(`... Alien has ${currentAlien.hull} remaining`);
-            } else {
-                console.log("You missed the attack ...");
+                // alien attacks next 
+                if(randomizer() < currentAlien.accuracy) {
+                    console.log(`Alien attacked for ${currentAlien.firepower} damage`);
+                    currentShip.hull -= currentAlien.firepower;
+                    console.log(`... Your Ship has ${currentShip.hull} hull remaining`);
+                } else {
+                    console.log("You dodged the attack!");
+                }
+
+                // check the ship's hull
+                if(currentShip.hull <= 0) {
+                    console.log("------------------------------");
+                    console.log("Your ship was DESTROYED!!! ☻☻☻");
+                    this.victor = currentAlien;
+                    console.log(`Alien ship had ${this.victor.hull} hull remaining`);
+                    break;
+                }
+
             }
 
-            // check the alien's hull
-            if(currentAlien.hull <= 0) {
-                console.log("------------------------------");
-                console.log("Hurray!!! You destroyed the evil alien! ☺☺☺");
-                this.victor = currentShip;
-                console.log(`Your ship has ${this.victor.hull} hull remaining.`);
-                break;
-            }
-
-            // alien attacks next 
-            if(randomizer() < currentAlien.accuracy) {
-                console.log(`Alien attacked for ${currentAlien.firepower} damage`);
-                currentShip.hull -= currentAlien.firepower;
-                console.log(`... Your Ship has ${currentShip.hull} hull remaining`);
-            } else {
-                console.log("You dodged the attack!");
-            }
-
-            // check the ship's hull
-            if(currentShip.hull <= 0) {
-                console.log("------------------------------");
-                console.log("Your ship was DESTROYED!!! ☻☻☻");
-                this.victor = currentAlien;
-                console.log(`Alien ship had ${this.victor.hull} hull remaining`);
-                break;
-            }
-
-        }
     },
+
+    // prompt the user to continue
+    // promptUser() {
+    //     const readline = require('readline');
+    //     const rl = readline.createInterface({input : process.stdin,
+    //                                         output : process.stdout});
+
+    //     rl.question(`Would you like to continue?\n`, function(userInput) {
+    //         userInput = userInput.trim();
+    //         if(userInput === "y") {
+    //             console.log("Here we go again ...");
+    //             rl.close();
+    //         }
+    //         else if(userInput === "n") {
+    //             console.log("Good choice! Live to fight another day.");
+    //             rl.close();
+    //         } else {
+    //             rl.setPrompt('Invalid response. Please try again.\n');
+    //             rl.prompt();
+    //             rl.on('line', function(userInput) {
+    //                 if(userInput === "y") {
+    //                     console.log("Here we go again!");
+    //                     rl.close();
+    //                 }
+    //                 else if(userInput === "n") {
+    //                     console.log("Good choice! Live to fight another day.");
+    //                     rl.close();
+    //                 } else {
+    //                     rl.setPrompt(`Your answer of ${userInput} is not valid. Try again\n`);
+    //                     rl.prompt();
+    //                 }
+    //             })
+    //         }
+    //     });
+
+    //     // rl.on('close', function() {
+    //     //     console.log("Time for the next round!");
+    //     // });
+
+    // },
 
 
     // battle logic, run other methods
@@ -232,7 +277,7 @@ const game = {
         console.log("------------------------------");
         this.duel();
         console.log("------------------------------");
-
+        // this.promptUser();
 
     },
 
@@ -270,23 +315,30 @@ game.start();
 
 
 
+/*
 
+// get victor from battle()
+// ship destroys alien, try to get the next alien from aliengroup
+if (victor === ship) {
+    let alienReady = getAlien()
+    if alienReady === true {
+        start new battle round
+    }
+    else // alienReady must be false b/c no more aliens left {
+        ship wins the game
+    }
+}
 
+// (victor === alien) b/c alien destroyed the ship, so try to get another ship from shipgroup
+else {
+        let shipReady = getShip()
+        if shipReady === true
+            start new battle round
+        else // shipReady must be false b/c no more ships left
+            alien wins the game
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 
 
 
