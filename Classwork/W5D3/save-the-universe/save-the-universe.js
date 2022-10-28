@@ -185,46 +185,46 @@ const game = {
     duel() {
     
             // keep running this loop while the ship's hull is than 0
-            while(currentShip.hull > 0) {
+            while(this.currentShip.hull > 0) {
 
                 // ship attacks first
-                if(randomizer() < currentShip.accuracy) {
-                    console.log(`You landed an attack for ${currentShip.firepower} damage`);
-                    currentAlien.hull -= currentShip.firepower;
-                    console.log(`... Alien has ${currentAlien.hull} hull remaining`);
+                if(randomizer() < this.currentShip.accuracy) {
+                    console.log(`You landed an attack for ${this.currentShip.firepower} damage`);
+                    this.currentAlien.hull -= this.currentShip.firepower;
+                    console.log(`... Alien has ${this.currentAlien.hull} hull remaining`);
                 } else {
                     console.log("You missed the attack ...");
                 }
 
                 // check the alien's hull
-                if(currentAlien.hull <= 0) {
+                if(this.currentAlien.hull <= 0) {
                     console.log("------------------------------");
                     console.log("\n------------------------------");
                     console.log("Post-Battle Report");
                     console.log("------------------------------");
                     console.log("Hurray!!! You destroyed the evil alien! ☺☺☺");
-                    this.victor = currentShip;
+                    this.victor = this.currentShip;
                     console.log(`Your ship had ${this.victor.hull} hull remaining.`);
                     break;
                 }
 
                 // alien attacks next 
-                if(randomizer() < currentAlien.accuracy) {
-                    console.log(`Alien attacked for ${currentAlien.firepower} damage`);
-                    currentShip.hull -= currentAlien.firepower;
-                    console.log(`... Your Ship has ${currentShip.hull} hull remaining`);
+                if(randomizer() < this.currentAlien.accuracy) {
+                    console.log(`Alien attacked for ${this.currentAlien.firepower} damage`);
+                    this.currentShip.hull -= this.currentAlien.firepower;
+                    console.log(`... Your Ship has ${this.currentShip.hull} hull remaining`);
                 } else {
                     console.log("You dodged the attack!");
                 }
 
                 // check the ship's hull
-                if(currentShip.hull <= 0) {
+                if(this.currentShip.hull <= 0) {
                     console.log("------------------------------");
                     console.log("\n------------------------------");
                     console.log("Post-Battle Report");
                     console.log("------------------------------");
                     console.log("Your ship was DESTROYED!!! ☻☻☻");
-                    this.victor = currentAlien;
+                    this.victor = this.currentAlien;
                     console.log(`Alien ship had ${this.victor.hull} hull remaining`);
                     break;
                 }
@@ -280,9 +280,7 @@ const game = {
         console.log(`BATTLE # ${this.count++} HAS COMMENCED!!!`);
         console.log("========================================");
 
-
-        this.showCurrentActors(currentShip, currentAlien);
-
+        this.showCurrentActors(this.currentShip, this.currentAlien);
 
         console.log("------------------------------");
         console.log("In-Battle Report");
@@ -308,8 +306,8 @@ const game = {
         this.showAllStats();
 
         // get current ship and current alien
-        currentShip  = this.getNextShip(this.shipGroup);
-        currentAlien = this.getNextAlien(this.alienGroup);
+        this.currentShip  = this.getNextShip(this.shipGroup);
+        this.currentAlien = this.getNextAlien(this.alienGroup);
 
         do {
             this.battle();
@@ -322,7 +320,7 @@ const game = {
             // console.log(currentAlien);
 
 
-            if(this.victor === currentShip) {
+            if(this.victor === this.currentShip) {
                 while (this.alienGroup.length >= 0) {
                     if(this.alienGroup.length === 0) {
                         console.log("============================================================");
@@ -334,12 +332,12 @@ const game = {
                     } else {
                         // console.log(this.alienGroup.length);
                         // console.log(currentAlien);
-                        if(currentAlien.hull <= 0) {
-                            currentAlien = this.getNextAlien(this.alienGroup);
+                        if(this.currentAlien.hull <= 0) {
+                            this.currentAlien = this.getNextAlien(this.alienGroup);
                             // console.log(currentAlien);
-                            if(currentAlien) {
+                            if(this.currentAlien) {
                                 this.battle();
-                                if(this.victor === currentAlien) {
+                                if(this.victor === this.currentAlien) {
                                     console.log("============================================================");
                                     console.log("POST-GAME REPORT");
                                     console.log("============================================================");
@@ -352,7 +350,7 @@ const game = {
                         }
                     }
                 }
-            } else if (this.victor === currentAlien) {
+            } else if (this.victor === this.currentAlien) {
                 console.log("============================================================");
                 console.log("POST-GAME REPORT");
                 console.log("============================================================");
@@ -370,6 +368,8 @@ const game = {
 
 
 game.start();
+
+
 
 
 
