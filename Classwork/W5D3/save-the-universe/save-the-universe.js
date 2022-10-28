@@ -107,7 +107,7 @@ const game = {
     shipGroup   : [],
     alienGroup  : [],
     shipCount   : randomizerRangeRounded(1, 1),
-    alienCount  : randomizerRangeRounded(4, 6),
+    alienCount  : randomizerRangeRounded(1, 6),
     currentShip : {},
     currentAlien: {},
     victor      : {},
@@ -191,7 +191,7 @@ const game = {
                 if(randomizer() < currentShip.accuracy) {
                     console.log(`You landed an attack for ${currentShip.firepower} damage`);
                     currentAlien.hull -= currentShip.firepower;
-                    console.log(`... Alien has ${currentAlien.hull} remaining`);
+                    console.log(`... Alien has ${currentAlien.hull} hull remaining`);
                 } else {
                     console.log("You missed the attack ...");
                 }
@@ -219,6 +219,9 @@ const game = {
 
                 // check the ship's hull
                 if(currentShip.hull <= 0) {
+                    console.log("------------------------------");
+                    console.log("\n------------------------------");
+                    console.log("Post-Battle Report");
                     console.log("------------------------------");
                     console.log("Your ship was DESTROYED!!! ☻☻☻");
                     this.victor = currentAlien;
