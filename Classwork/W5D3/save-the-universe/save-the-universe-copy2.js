@@ -73,7 +73,7 @@ function randomizerRangeRounded(min, max) {
 class Ship {
     // set ship properties
     constructor() {
-        this.hull      = 5; // Change back to 20
+        this.hull      = 3; // Change back to 20
         this.firepower = 5;
         this.accuracy  = 0.7;
     }
@@ -107,11 +107,10 @@ const game = {
     shipGroup   : [],
     alienGroup  : [],
     shipCount   : randomizerRangeRounded(1, 1),
-    alienCount  : randomizerRangeRounded(4, 6),
+    alienCount  : randomizerRangeRounded(1, 6),
     currentShip : {},
     currentAlien: {},
     victor      : {},
-    count       : 1,
 
 
     // create new ships, add to shipGroup
@@ -132,12 +131,12 @@ const game = {
 
     // show the stats of all actors
     showAllStats() {
-        console.log("============================================================");
+        console.log("========================================");
         console.log("PRE-GAME REPORT [ALL ACTORS]");
-        console.log("============================================================");
+        console.log("========================================");
         console.log(this.shipGroup);
         console.log(this.alienGroup);
-        console.log("=============================================================\n\n");
+        console.log("========================================\n\n");
     },
 
 
@@ -164,11 +163,13 @@ const game = {
     // },
 
     getNextShip(groupOfShips) {
-        return groupOfShips.shift();
+        let ship = groupOfShips.shift();
+        return ship;
     },
 
     getNextAlien(groupOfAliens) {
-        return groupOfAliens.shift();
+        let alien = groupOfAliens.shift();
+        return alien;
     },
 
     showCurrentActors(theCurrentShip, theCurrentAlien) {
@@ -198,9 +199,6 @@ const game = {
 
                 // check the alien's hull
                 if(currentAlien.hull <= 0) {
-                    console.log("------------------------------");
-                    console.log("\n------------------------------");
-                    console.log("Post-Battle Report");
                     console.log("------------------------------");
                     console.log("Hurray!!! You destroyed the evil alien! ☺☺☺");
                     this.victor = currentShip;
@@ -274,7 +272,7 @@ const game = {
     // battle logic, run other methods
     battle() {
         console.log("========================================");
-        console.log(`BATTLE # ${this.count++} HAS COMMENCED!!!`);
+        console.log("BATTLE HAS COMMENCED!!!");
         console.log("========================================");
 
 
@@ -285,7 +283,7 @@ const game = {
         console.log("In-Battle Report");
         console.log("------------------------------");
         this.duel();
-        console.log("------------------------------\n\n");
+        console.log("------------------------------");
         // this.promptUser();
 
     },
@@ -293,9 +291,9 @@ const game = {
 
     // start the game
     start() {
-        console.log("================================================================================");
-        console.log("LET THE BATTLE FOR EARTH BEGIN!!!");
-        console.log("================================================================================\n\n");
+        console.log("============================================================");
+        console.log("LET THE GAMES BEGIN!!! FOR EARTH!!!");
+        console.log("============================================================\n\n");
 
         // create player and aliens
         this.createShips();
@@ -308,110 +306,16 @@ const game = {
         currentShip  = this.getNextShip(this.shipGroup);
         currentAlien = this.getNextAlien(this.alienGroup);
 
-        do {
-            this.battle();
-        }
-
-        while (this.shipGroup.length > 0 && this.alienGroup.length > 0) {
-            // this.battle();
-            // console.log(this.victor)
-            // console.log(currentShip)
-            // console.log(currentAlien);
 
 
-            if(this.victor === currentShip) {
-                while (this.alienGroup.length >= 0) {
-                    if(this.alienGroup.length === 0) {
-                        console.log("============================================================");
-                        console.log("POST-GAME REPORT");
-                        console.log("============================================================");
-                        console.log(`You defeated all ${this.count-1} aliens! You win!!!`);
-                        console.log("============================================================");
-                        break;
-                    } else {
-                        // console.log(this.alienGroup.length);
-                        // console.log(currentAlien);
-                        if(currentAlien.hull <= 0) {
-                            currentAlien = this.getNextAlien(this.alienGroup);
-                            // console.log(currentAlien);
-                            if(currentAlien) {
-                                this.battle();
-                                if(this.victor === currentAlien) {
-                                    console.log("============================================================");
-                                    console.log("POST-GAME REPORT");
-                                    console.log("============================================================");
-                                    console.log(`You only defeated ${this.count-2} of the aliens. Earth is lost ... better luck next time`);
-                                    console.log("============================================================");
-                                    break;
-                                }
-                            } 
-                            // else {
-                            //     console.log("Test");
-                            // }
-                        }
-                    }
-                }
-            } else if (this.victor === currentAlien) {
-                console.log("============================================================");
-                console.log("POST-GAME REPORT");
-                console.log("============================================================");
-                console.log(`All ${this.alienGroup.length} have invaded Earth. Earth is lost ... What were you doing?`);
-                console.log("============================================================");
-            }
 
+        // commence the battle!!!
+        this.battle();
 
-            // if(this.victor === currentShip) {
-            //     currentAlien = this.getNextAlien(this.alienGroup);
-            //     if(currentAlien) {
-            //         this.battle();
-            //     } else {
-            //         console.log("No more aliens left. You win!");
-            //     }
-            // }
-        }
+    },
 
-        // if(currentShip && currentAlien) {
-        //     // commence the battle!!!
-        //     this.battle();
-        // } else if (currentShip == false) {
-        //     currentShip  = this.getNextShip(this.shipGroup);
-        //     if(currentShip === "undefined") {
-        //         console.log("No more ships left. You lose.");
-        //     } else{
-        //         this.battle();
-        //     }
-        // } else if (currentAlien == false) {
-        //     currentAlien  = this.getNextAlien(this.alienGroup);
-        //     if(currentAlien === "undefined") {
-        //         console.log("No more aliens left. You win!");
-        //     } else{
-        //         this.battle();
-        //     }
-        // }
+    
 
-
-        // // KINDA WORKING
-        // while (this.shipGroup.length > 0 && this.alienGroup.length > 0) {
-        //     // this.battle();
-        //     // console.log(this.victor)
-        //     // console.log(currentShip)
-        //     // console.log(currentAlien);
-        //     if(this.victor === currentShip) {
-        //         console.log(currentAlien);
-        //         if(currentAlien.hull <= 0) {
-        //             currentAlien = this.getNextAlien(this.alienGroup);
-        //             console.log(currentAlien);
-        //             if(currentAlien) {
-        //                 this.battle();
-        //             } else {
-        //                 console.log("No more aliens left. You win!");
-        //             }
-        //         }
-        //     }
-        // }
-
-  
-    }
 };
 
 
