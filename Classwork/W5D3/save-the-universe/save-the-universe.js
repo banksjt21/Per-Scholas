@@ -73,9 +73,9 @@ function randomizerRangeRounded(min, max) {
 class Ship {
     // set ship properties
     constructor() {
-        this.hull      = 5; // Change back to 20
-        this.firepower = 5;
-        this.accuracy  = 0.7;
+        this.hull      = randomizerRangeRounded(4, 7);      // Default = 20
+        this.firepower = randomizerRangeRounded(3, 5);      // Default = 5
+        this.accuracy  = randomizerRangeForFloat(0.6, 0.8); // Default = 0.7
     }
 
     // get ship properties
@@ -87,9 +87,9 @@ class Ship {
 class Alien {
     // set alien properties
     constructor() {
-        this.hull      = randomizerRangeRounded(3, 6);
-        this.firepower = randomizerRangeRounded(2, 4);
-        this.accuracy  = randomizerRangeForFloat(0.6, 0.8);
+        this.hull      = randomizerRangeRounded(3, 6);      // Default = (3, 6)
+        this.firepower = randomizerRangeRounded(2, 4);      // Default = (2, 4)
+        this.accuracy  = randomizerRangeForFloat(0.6, 0.8); // Default = (0.6, 0.8)
     }
 
     // get alien properties
@@ -103,14 +103,25 @@ class Alien {
 
 
 const game = {
-    // declare properties
+    // arrays for actor objects
     shipGroup   : [],
     alienGroup  : [],
-    shipCount   : randomizerRangeRounded(1, 1),
-    alienCount  : randomizerRangeRounded(1, 6),
+
+    // number of actors
+    shipCount   : randomizerRangeRounded(3, 4), // Default = 1
+    alienCount  : randomizerRangeRounded(3, 6), // Default = 6
+
+    // curent actor objects used in duel()
     currentShip : {},
     currentAlien: {},
-    victor      : {},
+
+    // values are set in the duel()
+    victor          : {},
+    vanquished      : {},
+    victorGroup     : [],
+    vanquishedGroup : [],
+
+    // number of rounds
     count       : 1,
 
 
@@ -141,36 +152,17 @@ const game = {
     },
 
 
-    // // get the actors for the upcoming battle
-    // getActors() {
-    //     // remove the first ship from the group, set it as the currentShip
-    //     currentShip = this.shipGroup.shift();
-
-    //     // if no more ships left, currentShip is 'undefined'
-    //     // if(!currentShip) {
-    //     //     console.log("You have no more ships left.");
-    //     // }
-    //     console.log(currentShip);
-
-
-    //     // remove the first alien from the group, set it as the currentAlien
-    //     currentAlien = this.alienGroup.shift();
-
-    //     // if no more aliens left, currentAlien is 'undefined'
-    //     // if(!currentAlien) {
-    //     //     console.log("There are no more aliens left.");
-    //     // }
-    //     console.log(currentAlien);
-    // },
-
+    // get the next ship from the shipGroup
     getNextShip(groupOfShips) {
         return groupOfShips.shift();
     },
 
+    // get the next alien from the alienGroup
     getNextAlien(groupOfAliens) {
         return groupOfAliens.shift();
     },
 
+    // display all actors in the game
     showCurrentActors(theCurrentShip, theCurrentAlien) {
         console.log("------------------------------");
         console.log("Pre-Battle Report [Current Actors]");
@@ -203,7 +195,10 @@ const game = {
                     console.log("Post-Battle Report");
                     console.log("------------------------------");
                     console.log("Hurray!!! You destroyed the evil alien! ☺☺☺");
-                    this.victor = this.currentShip;
+                    this.victor          = this.currentShip;
+                    this.vanquished      = this.currentAlien;
+                    this.victorGroup     = this.shipGroup;
+                    this.vanquishedGroup = this.alienGroup;
                     console.log(`Your ship had ${this.victor.hull} hull remaining.`);
                     break;
                 }
@@ -224,7 +219,10 @@ const game = {
                     console.log("Post-Battle Report");
                     console.log("------------------------------");
                     console.log("Your ship was DESTROYED!!! ☻☻☻");
-                    this.victor = this.currentAlien;
+                    this.victor          = this.currentAlien;
+                    this.vanquished      = this.currentShip;
+                    this.victorGroup     = this.alienGroup;
+                    this.vanquishedGroup = this.shipGroup;
                     console.log(`Alien ship had ${this.victor.hull} hull remaining`);
                     break;
                 }
@@ -274,7 +272,7 @@ const game = {
     // },
 
 
-    // battle logic, run other methods
+    // prepare the battle, then run duel()
     battle() {
         console.log("========================================");
         console.log(`BATTLE # ${this.count++} HAS COMMENCED!!!`);
@@ -285,15 +283,17 @@ const game = {
         console.log("------------------------------");
         console.log("In-Battle Report");
         console.log("------------------------------");
+
         this.duel();
+
         console.log("------------------------------\n\n");
         // this.promptUser();
-
     },
 
 
     // start the game
     start() {
+        // display title
         console.log("================================================================================");
         console.log("LET THE BATTLE FOR EARTH BEGIN!!!");
         console.log("================================================================================\n\n");
@@ -309,59 +309,47 @@ const game = {
         this.currentShip  = this.getNextShip(this.shipGroup);
         this.currentAlien = this.getNextAlien(this.alienGroup);
 
-        do {
-            this.battle();
-        }
-
+        // while both actor groups are not empty, run this code
         while (this.shipGroup.length > 0 && this.alienGroup.length > 0) {
-            // this.battle();
-            // console.log(this.victor)
-            // console.log(currentShip)
-            // console.log(currentAlien);
 
+            // make sure that the battle occurs at least once
+            if(this.count === 1) {
+                this.battle();
+            }            
 
-            if(this.victor === this.currentShip) {
-                while (this.alienGroup.length >= 0) {
-                    if(this.alienGroup.length === 0) {
-                        console.log("============================================================");
-                        console.log("POST-GAME REPORT");
-                        console.log("============================================================");
-                        console.log(`You defeated all ${this.count-1} aliens! You win!!!`);
-                        console.log("============================================================");
-                        break;
-                    } else {
-                        // console.log(this.alienGroup.length);
-                        // console.log(currentAlien);
-                        if(this.currentAlien.hull <= 0) {
-                            this.currentAlien = this.getNextAlien(this.alienGroup);
-                            // console.log(currentAlien);
-                            if(this.currentAlien) {
-                                this.battle();
-                                if(this.victor === this.currentAlien) {
-                                    console.log("============================================================");
-                                    console.log("POST-GAME REPORT");
-                                    console.log("============================================================");
-                                    console.log(`You only defeated ${this.count-2} of the aliens. Earth is lost ... better luck next time`);
-                                    console.log("============================================================");
-                                    break;
-                                }
-                            } 
-
-                        }
-                    }
+            // while the vanquished (losing) group still has actors left, run this code
+            while(this.vanquishedGroup.length > 0) {
+                // if the alien was vanquished, get the next alien from the group
+                if(this.vanquished === this.currentAlien) {
+                    this.currentAlien = this.getNextAlien(this.alienGroup);
+                } else {
+                    // the ship was vanquished, so get the next ship from the group
+                    this.currentShip  = this.getNextShip(this.shipGroup);
                 }
-            } else if (this.victor === this.currentAlien) {
+
+                // if we were able to successfully get the next actor, battle() again
+                if(this.currentShip && this.currentAlien) {
+                    this.battle();
+                } else {
+                    // exit this while loop
+                    break;
+                }
+            }
+
+            // if the losing group has no more actors left, the game is over
+            if(this.vanquishedGroup.length === 0) {
                 console.log("============================================================");
                 console.log("POST-GAME REPORT");
                 console.log("============================================================");
-                console.log(`All ${this.alienGroup.length} have invaded Earth. Earth is lost ... What were you doing?`);
+                if(this.victor === this.currentShip) {
+                    console.log(`You defeated all of the aliens! You win!!!`);
+                } else {
+                    console.log(`You didn't defeat enough of the aliens. Earth is lost ... better luck next time`);
+                }
                 console.log("============================================================");
             }
 
         }
-
-
-
   
     }
 };
