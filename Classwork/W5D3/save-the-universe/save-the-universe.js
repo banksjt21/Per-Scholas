@@ -348,9 +348,7 @@ const game = {
                                     break;
                                 }
                             } 
-                            // else {
-                            //     console.log("Test");
-                            // }
+
                         }
                     }
                 }
@@ -362,63 +360,13 @@ const game = {
                 console.log("============================================================");
             }
 
-
-            // if(this.victor === currentShip) {
-            //     currentAlien = this.getNextAlien(this.alienGroup);
-            //     if(currentAlien) {
-            //         this.battle();
-            //     } else {
-            //         console.log("No more aliens left. You win!");
-            //     }
-            // }
         }
 
-        // if(currentShip && currentAlien) {
-        //     // commence the battle!!!
-        //     this.battle();
-        // } else if (currentShip == false) {
-        //     currentShip  = this.getNextShip(this.shipGroup);
-        //     if(currentShip === "undefined") {
-        //         console.log("No more ships left. You lose.");
-        //     } else{
-        //         this.battle();
-        //     }
-        // } else if (currentAlien == false) {
-        //     currentAlien  = this.getNextAlien(this.alienGroup);
-        //     if(currentAlien === "undefined") {
-        //         console.log("No more aliens left. You win!");
-        //     } else{
-        //         this.battle();
-        //     }
-        // }
 
-
-        // // KINDA WORKING
-        // while (this.shipGroup.length > 0 && this.alienGroup.length > 0) {
-        //     // this.battle();
-        //     // console.log(this.victor)
-        //     // console.log(currentShip)
-        //     // console.log(currentAlien);
-        //     if(this.victor === currentShip) {
-        //         console.log(currentAlien);
-        //         if(currentAlien.hull <= 0) {
-        //             currentAlien = this.getNextAlien(this.alienGroup);
-        //             console.log(currentAlien);
-        //             if(currentAlien) {
-        //                 this.battle();
-        //             } else {
-        //                 console.log("No more aliens left. You win!");
-        //             }
-        //         }
-        //     }
-        // }
 
   
     }
 };
-
-
-
 
 
 game.start();
@@ -455,40 +403,3 @@ else {
 
 
 
-
-
-
-
-
-
-
-
-
-// const randomizer = Math.random();
-// // 0 and 1
-
-// if(randomizer > 0.5) {
-//     console.log("Human attacks first");
-// } else {
-//     console.log("Alien attacks first");
-// }
-
-
-
-
-
-
-// // Test Ship and Alien classes
-// console.log("======================");
-// console.log("Ship Test");
-// console.log("----------------------");
-// let ship = new Ship();
-// ship.getShipStats();
-// console.log("======================\n");
-
-// console.log("======================");
-// console.log("Alien Test");
-// console.log("----------------------");
-// let alien = new Alien();
-// alien.getAlienStats();
-// console.log("======================\n");
