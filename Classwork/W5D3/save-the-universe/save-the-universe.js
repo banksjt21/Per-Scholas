@@ -108,7 +108,7 @@ const game = {
     alienGroup  : [],
 
     // number of actors
-    shipCount   : randomizerRangeRounded(3, 4), // Default = 1
+    shipCount   : randomizerRangeRounded(1, 3), // Default = 1
     alienCount  : randomizerRangeRounded(3, 6), // Default = 6
 
     // curent actor objects used in duel()
@@ -123,6 +123,12 @@ const game = {
 
     // number of rounds
     count       : 1,
+
+    continueGame : "",
+    
+    shipReady : false,
+    alienReady: false,
+
 
 
     // create new ships, add to shipGroup
@@ -154,11 +160,17 @@ const game = {
 
     // get the next ship from the shipGroup
     getNextShip(groupOfShips) {
+        if(this.currentShip) {
+            this.shipReady = true
+        }
         return groupOfShips.shift();
     },
 
     // get the next alien from the alienGroup
     getNextAlien(groupOfAliens) {
+        if(this.currentAlien) {
+            this.alienReady = true;
+        }
         return groupOfAliens.shift();
     },
 
@@ -174,7 +186,7 @@ const game = {
 
 
     // battle logic for the current actors
-    duel() {
+    duelBetweenCurrentActors() {
     
             // keep running this loop while the ship's hull is than 0
             while(this.currentShip.hull > 0) {
@@ -199,6 +211,7 @@ const game = {
                     this.vanquished      = this.currentAlien;
                     this.victorGroup     = this.shipGroup;
                     this.vanquishedGroup = this.alienGroup;
+                    this.alienReady      = false;
                     console.log(`Your ship had ${this.victor.hull} hull remaining.`);
                     break;
                 }
@@ -223,6 +236,7 @@ const game = {
                     this.vanquished      = this.currentShip;
                     this.victorGroup     = this.alienGroup;
                     this.vanquishedGroup = this.shipGroup;
+                    this.shipReady       = false;
                     console.log(`Alien ship had ${this.victor.hull} hull remaining`);
                     break;
                 }
@@ -231,49 +245,10 @@ const game = {
 
     },
 
-    // prompt the user to continue
-    // promptUser() {
-    //     const readline = require('readline');
-    //     const rl = readline.createInterface({input : process.stdin,
-    //                                         output : process.stdout});
-
-    //     rl.question(`Would you like to continue?\n`, function(userInput) {
-    //         userInput = userInput.trim();
-    //         if(userInput === "y") {
-    //             console.log("Here we go again ...");
-    //             rl.close();
-    //         }
-    //         else if(userInput === "n") {
-    //             console.log("Good choice! Live to fight another day.");
-    //             rl.close();
-    //         } else {
-    //             rl.setPrompt('Invalid response. Please try again.\n');
-    //             rl.prompt();
-    //             rl.on('line', function(userInput) {
-    //                 if(userInput === "y") {
-    //                     console.log("Here we go again!");
-    //                     rl.close();
-    //                 }
-    //                 else if(userInput === "n") {
-    //                     console.log("Good choice! Live to fight another day.");
-    //                     rl.close();
-    //                 } else {
-    //                     rl.setPrompt(`Your answer of ${userInput} is not valid. Try again\n`);
-    //                     rl.prompt();
-    //                 }
-    //             })
-    //         }
-    //     });
-
-    //     // rl.on('close', function() {
-    //     //     console.log("Time for the next round!");
-    //     // });
-
-    // },
 
 
-    // prepare the battle, then run duel()
-    battle() {
+    // prepare the battle, then run duel() to determine victor
+    startBattleRound() {
         console.log("========================================");
         console.log(`BATTLE # ${this.count++} HAS COMMENCED!!!`);
         console.log("========================================");
@@ -284,52 +259,43 @@ const game = {
         console.log("In-Battle Report");
         console.log("------------------------------");
 
-        this.duel();
+        this.duelBetweenCurrentActors();
 
         console.log("------------------------------\n\n");
         // this.promptUser();
     },
 
 
-    // start the game
-    start() {
-        // display title
-        console.log("================================================================================");
-        console.log("LET THE BATTLE FOR EARTH BEGIN!!!");
-        console.log("================================================================================\n\n");
-
-        // create player and aliens
-        this.createShips();
-        this.createAliens();
-
-        // display all stats
-        this.showAllStats();
-
-        // get current ship and current alien
-        this.currentShip  = this.getNextShip(this.shipGroup);
-        this.currentAlien = this.getNextAlien(this.alienGroup);
-
+    // run battle at least once, check for victor, update vanquished with next actor in group
+    prepareNextDuel() {
         // while both actor groups are not empty, run this code
-        while (this.shipGroup.length > 0 && this.alienGroup.length > 0) {
+        while (this.shipReady === true && this.alienReady === true) {
 
             // make sure that the battle occurs at least once
             if(this.count === 1) {
-                this.battle();
+                this.startBattleRound();
             }            
 
             // while the vanquished (losing) group still has actors left, run this code
             while(this.vanquishedGroup.length > 0) {
+
                 // if the alien was vanquished, get the next alien from the group
                 if(this.vanquished === this.currentAlien) {
                     this.currentAlien = this.getNextAlien(this.alienGroup);
+                    if(this.currentAlien) {
+                        this.alienReady = true;
+                    }
                 } else {
                     // the ship was vanquished, so get the next ship from the group
                     this.currentShip  = this.getNextShip(this.shipGroup);
+                    if(this.currentShip) {
+                        this.shipReady = true;
+                    }
                 }
 
                 // if we were able to successfully get the next actor, battle() again
                 if(this.currentShip && this.currentAlien) {
-                    this.battle();
+                    this.startBattleRound();
                 } else {
                     // exit this while loop
                     break;
@@ -350,44 +316,85 @@ const game = {
             }
 
         }
+    },
+
+    // start the game
+    start() {
+        // display title
+        console.log("================================================================================");
+        console.log("LET THE BATTLE FOR EARTH BEGIN!!!");
+        console.log("================================================================================\n\n");
+
+        // create player and aliens
+        this.createShips();
+        this.createAliens();
+
+        // display all stats
+        this.showAllStats();
+
+        // get current ship and current alien for first battle
+        this.currentShip  = this.getNextShip(this.shipGroup);
+        this.currentAlien = this.getNextAlien(this.alienGroup);
+
+        // battle it out
+        this.prepareNextDuel();
   
-    }
+    },
+
+    
+    // // prompt the user to continue
+    // promptUser() {
+    //     const readline = require('readline');
+    //     const rl = readline.createInterface({input : process.stdin,
+    //                                         output : process.stdout});
+
+    //     let continueBattle;
+                                            
+    //     rl.question(`Would you like to continue? Type 'y' or 'n'\n`, function(userInput) {
+    //         userInput = userInput.trim();
+    //         if(userInput === "y") {
+    //             console.log("Into the battle we fly!");
+    //             continueBattle = "y";
+    //             rl.close();
+    //             return continueBattle;
+    //         }
+    //         else if(userInput === "n") {
+    //             console.log("Good choice! Live to fight another day.");
+    //             continueBattle = "n";
+    //             rl.close();
+    //             return continueBattle;
+    //         } else {
+    //             rl.setPrompt(`Invalid response. Please type 'y' or 'n'\n`);
+    //             rl.prompt();
+    //             rl.on('line', function(userInput) {
+    //                 if(userInput === "y") {
+    //                     console.log("Into the battle we fly!");
+    //                     continueBattle = "y";
+    //                     rl.close();
+    //                     return continueBattle;
+    //                 }
+    //                 else if(userInput === "n") {
+    //                     console.log("Good choice! Live to fight another day.");
+    //                     continueBattle = "n";
+    //                     rl.close();
+    //                     return continueBattle;
+    //                 } else {
+    //                     rl.setPrompt(`Your answer of ${userInput} is not valid. Please type 'y' or 'n'\n`);
+    //                     rl.prompt();
+    //                 }
+    //             })
+    //         }
+
+    //     });
+
+    //     // rl.on('close', function() {
+    //     //     console.log("Time for the next round!");
+    //     // });
+
+        
+    // },
 };
 
 
 game.start();
-
-
-
-
-
-
-
-
-/*
-
-// get victor from battle()
-// ship destroys alien, try to get the next alien from aliengroup
-if (victor === ship) {
-    let alienReady = getAlien()
-    if alienReady === true {
-        start new battle round
-    }
-    else // alienReady must be false b/c no more aliens left {
-        ship wins the game
-    }
-}
-
-// (victor === alien) b/c alien destroyed the ship, so try to get another ship from shipgroup
-else {
-        let shipReady = getShip()
-        if shipReady === true
-            start new battle round
-        else // shipReady must be false b/c no more ships left
-            alien wins the game
-}
-
-*/
-
-
 
