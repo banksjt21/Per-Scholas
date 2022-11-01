@@ -76,6 +76,8 @@ function checkForBrowser() {
     }
 }
 
+let gameMode = "";
+
 
 //  Class Definitions
 class Ship {
@@ -467,5 +469,36 @@ const game = {
 };
 
 
-game.start();
+// game.start();
 
+
+const browserPresent = checkForBrowser();
+// game is running in browser, wait for button click to start game
+if(browserPresent) {
+    console.log("================================================================================");
+    console.log("▌ ♠♣♥♦ ▐                      BROWSER MODE ENGAGED                      ▌ ♦♥♣♠ ▐");
+    console.log("================================================================================");
+    console.log("▌                       Welcome to the battle for Earth!                       ▐");
+    console.log("▌  Will you flee battle after victory or will you live to fight another day??  ▐");
+    console.log("▌                              The choice is yours!                            ▐");
+    console.log("================================================================================");
+    console.log("▌ ♠♣♥♦ ▐                                                                ▌ ♦♥♣♠ ▐");
+    console.log("================================================================================\n");
+    let startButton = document.querySelector('#startButton');
+    startButton.addEventListener('click', function(evt) {
+        if(evt.target) {
+            game.start();
+        }
+    });
+} else {
+    // game is running in node, just autostart game
+    console.log("================================================================================");
+    console.log("▌ ♠♣♥♦ ▐                      NODE.JS MODE ENGAGED                      ▌ ♦♥♣♠ ▐");
+    console.log("================================================================================");
+    console.log("▌                       Welcome to the battle for Earth!                       ▐");
+    console.log("▌                        There is no escape! Godspeed!!                        ▐");
+    console.log("================================================================================");
+    console.log("▌ ♠♣♥♦ ▐                                                                ▌ ♦♥♣♠ ▐");
+    console.log("================================================================================\n");
+    game.start();
+}
