@@ -1,7 +1,7 @@
 # PER SCHOLAS
 ---
 This is a repository which encompasses my prework, classwork, and homework that was done during my tenure within the Per Scholas program.
-
+<br><br><br>
 ## WHAT IS PER SCHOLAS?
 ---
 [![Per Scholas Background](/perscholas.jpg "Per Scholas")](https://www.perscholas.org)
@@ -10,4 +10,4 @@ This is a repository which encompasses my prework, classwork, and homework that 
 
 > Per Scholas has campuses in Atlanta, GA; Baltimore, MD; Greater Boston, MA; Chicago, IL; Greater Cincinnati, OH; Columbus, OH; Dallas, TX; Denver, CO; Detroit, MI; the National Capital Region; Newark, NJ; New York, NY; North Carolina; Orlando, FL; Philadelphia, PA; Phoenix, AZ; Pittsburgh, PA; St. Louis, MO; and Seattle, WA. 
 
->For more information, visit www.perscholas.org.
+> For more information, visit www.perscholas.org.
