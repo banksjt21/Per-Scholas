@@ -4,6 +4,7 @@ This is a repository which encompasses my prework, classwork, and homework that 
 
 ## WHAT IS PER SCHOLAS?
 ---
+[![Per Scholas Background](/perscholas.jpg "Per Scholas")](https://www.perscholas.org)
 
 > Per Scholas is a national organization that has been advancing economic mobility for more than 27 years. Through rigorous training, professional development, and robust employer connections, we prepare individuals traditionally underrepresented in technology for high-growth careers in the industry. We partner with leading employers to build more diverse talent pools, directly connecting our graduates to new career opportunities with 650+ leading employers, from Fortune 500 companies to innovative startups. With campuses in 20 cities, Per Scholas has trained more than 17,000 individuals in tech skills, building bridges to careers in technology.
 
