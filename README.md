@@ -1,7 +1,7 @@
 # PER SCHOLAS
 ---
-This is a repository which encompasses my prework, classwork, and homework that was done during my tenure within the Per Scholas program.
-<br><br><br>
+This is a repository which encompasses my prework, classwork, and homework that was completed during my tenure within the Per Scholas program.
+<br><br>
 ## WHAT IS PER SCHOLAS?
 ---
 [![Per Scholas Background](/perscholas.jpg "Per Scholas")](https://www.perscholas.org)
