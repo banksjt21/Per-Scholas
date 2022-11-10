@@ -1,0 +1,16 @@
+W7D1 - JavaScript Callbacks and Arrow Functions
+===============================================
+
+❓ When the add and subtract functions are passed as arguments to the compute function - they are ___ functions.
+- Callbacks
+
+
+❓ In your own words describe what the term "implicit return" means.
+-  An implicit return occurs when an arrow function returns data without using the 'return' keyword.
+-  It occurs when the expression following the arrow (=>) is 'concise' (single-statement).
+-  If multiple expressions or lines of code are needed in the body of the function, then it will not be implicit.
+-  The body of the function will also need to be enclosed in braces.
+
+❓ Describe what a callback function is in your own words.
+-  A callback function is a function that is passed as an argument to another function.
+-  A callback function can be used within an asynchronous function to make a block of code run when the asynchronous function finishes executing.
