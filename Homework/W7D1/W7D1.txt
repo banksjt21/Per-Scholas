@@ -1,6 +1,7 @@
 W7D1 - JavaScript Callbacks and Arrow Functions
 ===============================================
 
+
 ❓ When the add and subtract functions are passed as arguments to the compute function - they are ___ functions.
 - Callbacks
 
@@ -10,6 +11,7 @@ W7D1 - JavaScript Callbacks and Arrow Functions
 -  It occurs when the expression following the arrow (=>) is 'concise' (single-statement).
 -  If multiple expressions or lines of code are needed in the body of the function, then it will not be implicit.
 -  The body of the function will also need to be enclosed in braces.
+
 
 ❓ Describe what a callback function is in your own words.
 -  A callback function is a function that is passed as an argument to another function.
