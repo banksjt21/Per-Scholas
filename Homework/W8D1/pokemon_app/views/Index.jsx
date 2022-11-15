@@ -1,5 +1,5 @@
 
-const myStyle = {
+const h1 = {
     color: '#ffffff',
     backgroundColor: '#000000'
 };
@@ -12,8 +12,26 @@ class Index extends React.Component {
         const { pokemon } = this.props;    // destructure the pokemon array
 
         return (
-            <div style={myStyle}>
-                <h1>See All The Pokemon!</h1>
+            <div>
+                <h1 style={h1}>See All The Pokemon!</h1>
+                <ul>
+
+                    {
+
+                        pokemon.map((character, i) => {
+                            let charName = character.name;
+
+                            return (
+                                <li key = {i}>
+                                    {charName.charAt(0).toUpperCase() + charName.slice(1).toLowerCase()}
+                                </li>
+                            )
+                        })
+
+                    }
+
+
+                </ul>
             </div>
         )
     }
