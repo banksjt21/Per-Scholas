@@ -23,7 +23,9 @@ class Index extends React.Component {
 
                             return (
                                 <li key = {i}>
+                                    <a href={`/pokemon/${i}`}>
                                     {charName.charAt(0).toUpperCase() + charName.slice(1).toLowerCase()}
+                                    </a>
                                 </li>
                             )
                         })
