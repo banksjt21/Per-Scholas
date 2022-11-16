@@ -19,7 +19,7 @@ const pokemon    = require("./models/pokemon");
 const reactViews = require("express-react-views");
 
 
-
+//  Setup view engine
 app.set("view engine", "jsx");
 app.engine("jsx", reactViews.createEngine());
 
