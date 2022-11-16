@@ -14,7 +14,7 @@ class Show extends React.Component {
         return (
             <div>
                 <h1 style={h1}>Gotta Catch 'Em All!</h1>
-                <h2>{name}</h2>
+                <h2>{name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()}</h2>
                 {/* <a href="/pokemon"><img src={img + ".jpg"} alt={name}></img></a> */}
                 <a href="/pokemon"><img src={`${img}.jpg`} alt={name}></img></a>
             </div>
