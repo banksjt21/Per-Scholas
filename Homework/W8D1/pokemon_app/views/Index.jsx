@@ -1,7 +1,8 @@
 
 const h1 = {
     color: '#ffffff',
-    backgroundColor: '#000000'
+    backgroundColor: '#000000',
+    padding: '10px'
 };
 
 
@@ -14,6 +15,9 @@ class Index extends React.Component {
         return (
             <div>
                 <h1 style={h1}>See All The Pokemon!</h1>
+                <nav>
+                    <a href="/pokemon/new">Create New Pokemon</a>
+                </nav>
                 <ul>
 
                     {

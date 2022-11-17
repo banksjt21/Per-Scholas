@@ -1,7 +1,8 @@
 
 const h1 = {
     color: '#ffffff',
-    backgroundColor: '#44c4d1'
+    backgroundColor: '#44c4d1',
+    padding: '10px'
 };
 
 

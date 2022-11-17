@@ -2,7 +2,6 @@
 /*  ===========================================================================
 //  VARIABLES
 /* ========================================================================  */
-
 //  Get the express package
 const express    = require("express");
 
@@ -25,10 +24,23 @@ app.engine("jsx", reactViews.createEngine());
 
 
 
+
+/*  ===========================================================================
+//  MIDDLEWARE
+/* ========================================================================  */
+app.use((req, res, next) => {
+    console.log("Middleware Running");
+    next();
+});
+
+app.use(express.urlencoded({extended:false}));
+
+
+
+
 /*  ===========================================================================
 //  CONTROLLERS
 /* ========================================================================  */
-
 app.get("/", (req, res) => {
     res.send("Welcome to the Pokemon App!");
 });
@@ -37,9 +49,19 @@ app.get("/pokemon", (req, res) => {
     res.render("Index", {pokemon: pokemon});
 });
 
+app.get("/pokemon/new", (req, res) => {
+    res.render("New");
+});
+
+app.post("/pokemon", (req, res) => {
+    pokemon.push(req.body);
+    res.redirect("/pokemon");
+});
+
 app.get("/pokemon/:id", (req, res) => {
     res.render("Show", pokemon[req.params.id]);
 });
+
 
 
 
