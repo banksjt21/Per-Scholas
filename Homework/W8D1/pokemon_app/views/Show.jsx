@@ -10,7 +10,7 @@ const React = require("react");
 
 class Show extends React.Component {
     render() {
-        const { name, img } = this.props;    // destructure the pokemon array
+        const { name, img } = this.props.pokemon;    // destructure the pokemon array
         return (
             <div>
                 <h1 style={h1}>Gotta Catch 'Em All!</h1>
@@ -23,4 +23,4 @@ class Show extends React.Component {
     }
 }
 
-module.exports = Show
+module.exports = Show;

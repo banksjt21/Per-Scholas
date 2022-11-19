@@ -1,7 +1,7 @@
 
 const h1 = {
     color: '#ffffff',
-    backgroundColor: '#000000',
+    backgroundColor: '#a91c49',
     padding: '10px'
 };
 
@@ -27,7 +27,7 @@ class Index extends React.Component {
 
                             return (
                                 <li key = {i}>
-                                    <a href={`/pokemon/${i}`}>
+                                    <a href={`/pokemon/${character._id}`}>
                                     {charName.charAt(0).toUpperCase() + charName.slice(1).toLowerCase()}
                                     </a>
                                 </li>
