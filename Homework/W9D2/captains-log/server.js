@@ -2,7 +2,6 @@
 //  DEPENDENCIES
 //  =======================================================================  */
 require("dotenv").config();
-const { application } = require("express");
 const express         = require("express");
 const app             = express();
 const port            = 3000;
@@ -19,25 +18,37 @@ app.engine("jsx", reactViews.createEngine());
 
 
 
+
 /*  ===========================================================================
 //  MIDDLEWARE
 //  =======================================================================  */
-// app.use(express.urlencoded({extended:false}));
-// app.use(methodOverride("_method"));
+app.use(express.urlencoded({extended:false}));
 
 
 
 
-
-//  Routes
-app.get("/", (req, res) => {
+/*  ===========================================================================
+//  ROUTES
+//  =======================================================================  */
+//  New
+app.get("/logs/new", (req, res) => {
     res.render("New");
+});
+
+
+//  Create
+app.post("/logs", (req, res) => {
+    req.body.shipIsBroken = req.body.shipIsBroken === "on" ? true : false;
+    res.send(req.body);
+
 });
 
 
 
 
-//  Listen on port
+/*  ===========================================================================
+//  LISTEN ON PORT
+//  =======================================================================  */
 app.listen(port, () => {
     console.log(`Listening on port: ${port}`);
 });
