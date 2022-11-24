@@ -99,6 +99,18 @@ app.post("/logs", (req, res) => {
 });
 
 
+//  Edit
+app.get("/logs/:id/edit", (req, res) => {
+    Log.findById(req.params.id, (error, foundLog) => {
+        if(!error) {
+            res.status(200).render("Edit", {log: foundLog});
+        } else {
+            res.status(400).send({ msg: error.message });
+        }
+    });
+});
+
+
 //  Show
 app.get("/logs/:id", (req, res) => {
     Log.findById(req.params.id, (error, foundLog) => {
