@@ -7,6 +7,7 @@ const app             = express();
 const port            = 3000;
 const reactViews      = require("express-react-views");
 const mongoose        = require("mongoose");
+const seedData        = require("./seedData");
 
 
 
@@ -64,6 +65,13 @@ app.post("/logs", (req, res) => {
     req.body.shipIsBroken = req.body.shipIsBroken === "on" ? true : false;
     res.send(req.body);
 });
+
+
+
+
+/*  ===========================================================================
+//  SEED THE DATABASE
+//  =======================================================================  */
 
 
 
