@@ -6,6 +6,7 @@ const express         = require("express");
 const app             = express();
 const port            = 3000;
 const reactViews      = require("express-react-views");
+const mongoose        = require("mongoose");
 
 
 
@@ -40,7 +41,6 @@ app.get("/logs/new", (req, res) => {
 app.post("/logs", (req, res) => {
     req.body.shipIsBroken = req.body.shipIsBroken === "on" ? true : false;
     res.send(req.body);
-
 });
 
 
