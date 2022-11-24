@@ -61,13 +61,12 @@ app.get("/logs", (req, res) => {
         if(!error) {
             res.status(200).render("Index", {
                 logs: allLogs
-            })
+            });
         } else {
             res.status(400).send(error);
         }
     })
 });
-
 
 
 //  New
@@ -80,14 +79,29 @@ app.get("/logs/new", (req, res) => {
 app.post("/logs", (req, res) => {
     req.body.shipIsBroken = req.body.shipIsBroken === "on" ? true : false;
     // res.send(req.body);
+    // console.log(res)
 
     Log.create(req.body, (error, createdLog) => {
         if(!error) {
-            res.status(200).redirect(`/logs/${req.body._id}`);  // Redirect to Show route
+            res.status(200).redirect(`/logs`);  // Redirect to Show route???
         } else {
             res.status(400).send(error);
         }
     })
+});
+
+
+//  Show
+app.get("/logs/:id", (req, res) => {
+    Log.findById(req.params.id, (error, foundLog) => {
+        if(!error) {
+            res.status(200).render("Show", {
+                log: foundLog
+            });
+        } else {
+            res.status(400).send(error);
+        }
+    });
 });
 
 
