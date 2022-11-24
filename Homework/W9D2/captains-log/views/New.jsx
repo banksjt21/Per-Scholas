@@ -18,7 +18,7 @@ class New extends React.Component {
 
                     <table>
                         <tr>
-                            <td> Title: </td>
+                            <td>Title: </td>
                             <td><input type="text" name="title" /></td>
                         </tr>
                         <tr>
