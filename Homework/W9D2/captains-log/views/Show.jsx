@@ -16,6 +16,7 @@ class Show extends React.Component {
         return(
             <DefaultLayout title={`Captain's Log: ${title}`}>
                 <a href="/logs/">View All Logs</a><br /><br />
+                
                 <div>
                     <table>
                         <tr>

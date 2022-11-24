@@ -9,6 +9,7 @@ const reactViews      = require("express-react-views");
 const mongoose        = require("mongoose");
 const Log             = require("./models/logs");
 const seedData        = require("./seedData");
+const methodOverride  = require("method-override");
 
 
 
@@ -48,6 +49,7 @@ app.engine("jsx", reactViews.createEngine());
 //  MIDDLEWARE
 //  =======================================================================  */
 app.use(express.urlencoded({extended:false}));
+app.use(methodOverride("_method"));
 
 
 
@@ -75,11 +77,17 @@ app.get("/logs/new", (req, res) => {
 });
 
 
+//  Delete
+app.delete("/logs/:id", (req, res) => {
+    Log.findByIdAndDelete(req.params.id, (error, data) => {
+        res.redirect("/logs");
+    })
+});
+
+
 //  Create
 app.post("/logs", (req, res) => {
     req.body.shipIsBroken = req.body.shipIsBroken === "on" ? true : false;
-    // res.send(req.body);
-    // console.log(res)
 
     Log.create(req.body, (error, createdLog) => {
         if(!error) {
