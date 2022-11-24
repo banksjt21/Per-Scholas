@@ -14,14 +14,21 @@ const mongoose        = require("mongoose");
 /*  ===========================================================================
 //  MONGOOSE
 //  =======================================================================  */
-mongoose.connect(process.env.MONGO_URI,{
+//  Global Configuration
+const mongoURI = process.env.MONGO_URI;
+const database = mongoose.connection;
+
+//  Connect to database
+mongoose.connect(mongoURI,{
     useNewUrlParser: true,
     useUnifiedTopology: true
-  });
-
-mongoose.connection.once("open", () => {
-    console.log("Connected to MongoDB");
 });
+
+//  Connection Error/Success
+//  Define callback functions for various events
+database.on("error", (error) => console.log(error.message + " MongoDB is not running."));
+database.on("open",       () => console.log("MongoDB Connected"));
+database.on("close",      () => console.log("MongoDB Disconnected"));
 
 
 
@@ -65,5 +72,5 @@ app.post("/logs", (req, res) => {
 //  LISTEN ON PORT
 //  =======================================================================  */
 app.listen(port, () => {
-    console.log(`Listening on port: ${port}`);
+    console.log(`Listening on Port: ${port}`);
 });
