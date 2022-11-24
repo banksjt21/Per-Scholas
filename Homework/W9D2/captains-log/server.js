@@ -10,6 +10,7 @@ const mongoose        = require("mongoose");
 const Log             = require("./models/logs");
 const seedData        = require("./seedData");
 const methodOverride  = require("method-override");
+const logsController  = require("./controllers/logsController");
 
 
 
@@ -57,85 +58,7 @@ app.use(methodOverride("_method"));
 /*  ===========================================================================
 //  ROUTES
 //  =======================================================================  */
-//  Index
-app.get("/logs", (req, res) => {
-    Log.find({}, (error, allLogs) => {
-        if(!error) {
-            res.status(200).render("Index", {
-                logs: allLogs
-            });
-        } else {
-            res.status(400).send(error);
-        }
-    })
-});
-
-
-//  New
-app.get("/logs/new", (req, res) => {
-    res.render("New");
-});
-
-
-//  Delete
-app.delete("/logs/:id", (req, res) => {
-    Log.findByIdAndDelete(req.params.id, (error, data) => {
-        res.redirect("/logs");
-    })
-});
-
-
-//  Update
-app.put("/logs/:id", (req, res) => {
-    req.body.shipIsBroken = req.body.shipIsBroken === "on" ? true : false;
-    Log.findByIdAndUpdate(req.params.id, req.body, (error, updatedLog) => {
-        if(!error) {
-            res.status(200).redirect("/logs"); // Redirect to Index Page?
-        } else {
-            res.status(400).send(error);
-        }
-    })
-});
-
-
-//  Create
-app.post("/logs", (req, res) => {
-    req.body.shipIsBroken = req.body.shipIsBroken === "on" ? true : false;
-
-    Log.create(req.body, (error, createdLog) => {
-        if(!error) {
-            res.status(200).redirect(`/logs`);  // Redirect to Show route???
-        } else {
-            res.status(400).send(error);
-        }
-    })
-});
-
-
-//  Edit
-app.get("/logs/:id/edit", (req, res) => {
-    Log.findById(req.params.id, (error, foundLog) => {
-        if(!error) {
-            res.status(200).render("Edit", {log: foundLog});
-        } else {
-            res.status(400).send({ msg: error.message });
-        }
-    });
-});
-
-
-//  Show
-app.get("/logs/:id", (req, res) => {
-    Log.findById(req.params.id, (error, foundLog) => {
-        if(!error) {
-            res.status(200).render("Show", {
-                log: foundLog
-            });
-        } else {
-            res.status(400).send(error);
-        }
-    });
-});
+app.use("/logs", logsController);
 
 
 
