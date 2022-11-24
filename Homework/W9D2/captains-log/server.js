@@ -55,6 +55,21 @@ app.use(express.urlencoded({extended:false}));
 /*  ===========================================================================
 //  ROUTES
 //  =======================================================================  */
+//  Index
+app.get("/logs", (req, res) => {
+    Log.find({}, (error, allLogs) => {
+        if(!error) {
+            res.status(200).render("Index", {
+                logs: allLogs
+            })
+        } else {
+            res.status(400).send(error);
+        }
+    })
+});
+
+
+
 //  New
 app.get("/logs/new", (req, res) => {
     res.render("New");
@@ -64,7 +79,15 @@ app.get("/logs/new", (req, res) => {
 //  Create
 app.post("/logs", (req, res) => {
     req.body.shipIsBroken = req.body.shipIsBroken === "on" ? true : false;
-    res.send(req.body);
+    // res.send(req.body);
+
+    Log.create(req.body, (error, createdLog) => {
+        if(!error) {
+            res.status(200).redirect(`/logs/${req.body._id}`);  // Redirect to Show route
+        } else {
+            res.status(400).send(error);
+        }
+    })
 });
 
 
@@ -83,7 +106,7 @@ async function seedDatabase() {
         database.close();
     }
 }
-seedDatabase();
+// seedDatabase();
 
 
 
