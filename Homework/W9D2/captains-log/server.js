@@ -7,6 +7,7 @@ const app             = express();
 const port            = 3000;
 const reactViews      = require("express-react-views");
 const mongoose        = require("mongoose");
+const Log             = require("./models/logs");
 const seedData        = require("./seedData");
 
 
@@ -72,6 +73,17 @@ app.post("/logs", (req, res) => {
 /*  ===========================================================================
 //  SEED THE DATABASE
 //  =======================================================================  */
+async function seedDatabase() {
+    try {
+        const seededData = await Log.insertMany(seedData.previousLogs);
+        console.log(seededData);
+    } catch(error) {
+        console.log(error);
+    } finally {
+        database.close();
+    }
+}
+seedDatabase();
 
 
 

@@ -36,4 +36,4 @@ const previousLogs = [
     }
 ];
 
-module.exports = previousLogs;
+module.exports = { previousLogs };
