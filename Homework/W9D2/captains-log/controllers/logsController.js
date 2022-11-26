@@ -44,7 +44,7 @@ router.put("/:id", (req, res) => {
     req.body.shipIsBroken = req.body.shipIsBroken === "on" ? true : false;
     Log.findByIdAndUpdate(req.params.id, req.body, (error, updatedLog) => {
         if(!error) {
-            res.status(200).redirect("/logs"); // Redirect to Index Page?
+            res.status(200).redirect("/logs"); // Redirect to Index Page
         } else {
             res.status(400).send(error);
         }
@@ -58,7 +58,7 @@ router.post("/", (req, res) => {
 
     Log.create(req.body, (error, createdLog) => {
         if(!error) {
-            res.status(200).redirect(`/logs`);  // Redirect to Show route???
+            res.status(200).redirect(`/logs/${createdLog._id.valueOf()}`);  // Redirect to Show route
         } else {
             res.status(400).send(error);
         }
