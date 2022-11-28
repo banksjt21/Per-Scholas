@@ -14,6 +14,8 @@ class New extends React.Component {
     render() {
         return(
             <DefaultLayout title="Create New Log">
+                <a href="/logs/">View All Logs</a><br /><br />
+                
                 <form action="/logs" method="POST">
 
                     <table>

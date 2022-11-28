@@ -14,6 +14,8 @@ class Edit extends React.Component {
     render() {
         return(
             <DefaultLayout title="Edit Existing Log">
+                <a href="/logs/">View All Logs</a><br /><br />
+                
                 <form action={`/logs/${this.props.log._id}?_method=PUT`} method="POST">
 
                     <table>
