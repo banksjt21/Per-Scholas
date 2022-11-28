@@ -20,9 +20,12 @@ class Index extends React.Component {
                 <ul>
                     {
                         logs.map((log, i) => {
+                            let date = new Date(log.createdAt).toLocaleString();
+
                             return(
                                 <li key = {i}>
                                     <a href={`/logs/${log._id}`}>{log.title}</a><br />
+                                    <span>{date}</span>
                                     
                                     <form action={`/logs/${log._id}?_method=DELETE`} method="POST">
                                         <a href={`/logs/${log._id}/edit`}><button type="button">Edit Log</button></a>
