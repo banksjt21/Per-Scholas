@@ -13,7 +13,7 @@ const DefaultLayout = require("./layouts/Default");
 class Edit extends React.Component {
     render() {
         return(
-            <DefaultLayout title="Edit Existing Log">
+            <DefaultLayout title={`Edit Log: ${this.props.log.title}`}>
                 <a href="/logs/">View All Logs</a><br /><br />
                 
                 <form action={`/logs/${this.props.log._id}?_method=PUT`} method="POST">
@@ -32,7 +32,7 @@ class Edit extends React.Component {
                             <td>{this.props.log.shipIsBroken ? <input type="checkbox" name="shipIsBroken" id="shipIsBroken" defaultChecked /> : <input type="checkbox" name="shipIsBroken" id="shipIsBroken"/>}</td>
                         </tr>
                         <tr>
-                            <td><input type="submit" value="Edit Log" /></td>
+                            <td><input type="submit" value="Submit Edit" /></td>
                         </tr>
                     </table>
                     

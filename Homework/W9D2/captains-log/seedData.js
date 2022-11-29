@@ -33,6 +33,11 @@ const previousLogs = [
         title: "Seventh Log",
         entry: "Added fuel. Engine running normally.",
         shipIsBroken: true
+    },
+    {
+        title: "Spaceship Armageddon",
+        entry: "Made it home and tired.  Logging off.  Bravo niner.",
+        shipIsBroken: true
     }
 ];
 

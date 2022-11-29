@@ -31,7 +31,8 @@ class Show extends React.Component {
                             <td><label htmlFor="shipIsBroken" >Ship needs repairs?</label></td>
                             <td>{ shipIsBroken ? "Ship maintenance required." : "No maintenance necessary." }</td>
                         </tr>
-                    </table>                
+                    </table>
+                    <a href={`/logs/${this.props.log._id}/edit`}><button type="button">Edit Log</button></a>              
                 </div>
             </DefaultLayout>
         )
