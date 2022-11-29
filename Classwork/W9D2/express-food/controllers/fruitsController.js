@@ -4,6 +4,31 @@ const Fruit   = require("../models/fruits");
 
 
 
+
+//  Seed Route
+router.get("/seed", (req, res) => {
+    Fruit.create([
+        {
+            name: 'grapefruit',
+            color: 'pink',
+            readyToEat: true
+        },
+        {
+            name: 'grape',
+            color: 'purple',
+            readyToEat: false
+        },
+        {
+            name: 'avacado',
+            color: 'green',
+            readyToEat: true
+        }
+    ], (err, data) => {
+        res.redirect("/fruits");
+    })
+});
+
+
 //  ============================================
 //  FRUITS
 //  ============================================
