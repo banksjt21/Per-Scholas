@@ -14,18 +14,18 @@ class New extends React.Component {
     render() {
         return(
             <DefaultLayout title="Create New Log">
-                <a href="/logs/">View All Logs</a><br /><br />
+                <span>→ </span><a href="/logs/">View All Logs</a><br /><br />
                 
                 <form action="/logs" method="POST">
 
                     <table>
                         <tr>
                             <td>Title: </td>
-                            <td><input type="text" name="title" /></td>
+                            <td><input type="text" name="title" size="50" /></td>
                         </tr>
                         <tr>
                             <td>Entry: </td>
-                            <td><textarea name="entry" rows="4" cols="50"></textarea></td>
+                            <td><textarea name="entry" rows="5" cols="50"></textarea></td>
                         </tr>
                         <tr>
                             <td><label htmlFor="shipIsBroken" >Ship needs repairs?</label></td>

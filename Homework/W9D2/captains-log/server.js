@@ -51,6 +51,7 @@ app.engine("jsx", reactViews.createEngine());
 //  =======================================================================  */
 app.use(express.urlencoded({extended:false}));
 app.use(methodOverride("_method"));
+app.use(express.static('public')); // Tells express to try to match requests with files in the directory called 'public'
 
 
 

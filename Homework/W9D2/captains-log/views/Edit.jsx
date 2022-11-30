@@ -13,19 +13,19 @@ const DefaultLayout = require("./layouts/Default");
 class Edit extends React.Component {
     render() {
         return(
-            <DefaultLayout title={`Edit Log: ${this.props.log.title}`}>
-                <a href="/logs/">View All Logs</a><br /><br />
+            <DefaultLayout title={`Edit: ${this.props.log.title}`}>
+                <span>→ </span><a href="/logs/">View All Logs</a><br /><br />
                 
                 <form action={`/logs/${this.props.log._id}?_method=PUT`} method="POST">
 
                     <table>
                         <tr>
                             <td>Title: </td>
-                            <td><input type="text" name="title" defaultValue={this.props.log.title}/></td>
+                            <td><input type="text" name="title" defaultValue={this.props.log.title} size="50"/></td>
                         </tr>
                         <tr>
                             <td>Entry: </td>
-                            <td><textarea name="entry" rows="4" cols="50" defaultValue={this.props.log.entry}></textarea></td>
+                            <td><textarea name="entry" rows="5" cols="50" defaultValue={this.props.log.entry}></textarea></td>
                         </tr>
                         <tr>
                             <td><label htmlFor="shipIsBroken" >Ship needs repairs?</label></td>
