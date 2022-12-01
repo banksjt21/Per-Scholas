@@ -24,54 +24,6 @@ const router  = express.Router(); // middleware
 // });
 
 
-// Seed
-router.get("/seed", (req, res) => {
-    const startMovies = [
-        {
-            title: "Matrix",
-            releaseDate: "1999",
-            length: 136,
-            genre: "Sci-fi",
-            poster: "https://www.themoviedb.org/t/p/original/wIQjszQ0t6lFHjDsbdCxjynEdRB.jpg",
-            director: "Lana, Lily Wasoki",
-            rating: "R",
-            watchAgain: true,
-            cast: ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"]
-        },
-        {
-            title: "50 First Dates",
-            releaseDate: "2004",
-            length: 99,
-            genre: "Comedy",
-            poster: "https://www.themoviedb.org/t/p/original/zm9dfA5iwq4vGopD86WPoHXO40T.jpg",
-            director: "Peter Segal",
-            rating: "PG-13",
-            watchAgain: true,
-            cast: ["Adam Sandler", "Drew Barrymore", "Rob Schneider"]
-        },
-        {
-            title: "The Dark Knight",
-            releaseDate: "2008",
-            length: 152,
-            genre: "Action/Superhero",
-            poster: "https://www.themoviedb.org/t/p/original/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-            director: "Christopher Nolan",
-            rating: "PG-13",
-            watchAgain: true,
-            cast: ["Christian Bale", "Heath Ledger", "Aaron Eckhart"]
-        }
-    ]
-
-    Movie.deleteMany({}).then((data) => {
-        // Seed Starter Movies
-        Movie.create(startMovies).then((data) => {
-            // send created movies as response to confirm creation
-            res.json(data);
-        });
-    });
-});
-
-
 // Index route
 // router.get("/", (req, res) => {
 //     // find all the movies

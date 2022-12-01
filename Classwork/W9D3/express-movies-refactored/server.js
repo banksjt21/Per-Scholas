@@ -4,9 +4,9 @@
 const express          = require("express");
 const morgan           = require("morgan");
 const methodOverride   = require("method-override");
-const path             = require("path");
-const Movie            = require("./models/movie");
 const moviesController = require("./controllers/movie");
+// const path             = require("path");
+// const Movie            = require("./models/movie");
 
 
 

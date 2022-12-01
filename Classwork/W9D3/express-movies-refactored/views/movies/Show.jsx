@@ -11,7 +11,7 @@ class Show extends React.Component {
                     <article>
                         <img src={movie.poster} alt="" width="200" height="300" />
                         <h2>{movie.title}</h2>
-                        <p>{movie.genre} | {movie.releaseDate ? movie.releaseDate : "N/A"}</p>
+                        <p>{movie.genre} | {movie.releaseDate ? movie.releaseDate : "N/A"} | {movie.length} minutes</p>
                         <p>{movie.rating}</p>
                         <p>{movie.watchAgain ? "I would watch again." : "You gotta pay me to watch it."}</p>
                         <h4>{movie.director}</h4>
