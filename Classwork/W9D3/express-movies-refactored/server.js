@@ -9,31 +9,6 @@ const path = require("path");
 
 
 
-////////////////////////////////////////////////
-// Our Models
-////////////////////////////////////////////////
-// pull schema and model from mongoose using object destructuring
-const { Schema, model } = mongoose;
-
-// make movies schema
-const movieSchema = new Schema({
-    title: { type: String, required: true },
-    releaseDate: String,
-    length: Number,
-    genre: String,
-    poster: { type: String, required: true },
-    director: { type: String, required: true },
-    rating: String,
-    watchAgain: Boolean,
-    cast: [{ type: String }]
-});
-
-// make movie model
-const Movie = model("Movie", movieSchema);
-
-
-
-
 /////////////////////////////////////////////////
 // Create our Express Application Object Bind Liquid Templating Engine
 /////////////////////////////////////////////////
