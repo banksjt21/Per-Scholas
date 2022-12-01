@@ -21,14 +21,6 @@ app.set('view engine', 'jsx');
 
 
 
-/////////////////////////////////////////////////
-// Use the Movies Controller
-/////////////////////////////////////////////////
-app.use("/movies", moviesController);
-
-
-
-
 /////////////////////////////////////////////////////
 // Middleware
 /////////////////////////////////////////////////////
@@ -36,6 +28,14 @@ app.use(morgan("tiny")); //logging
 app.use(methodOverride("_method")); // override for put and delete requests from forms
 app.use(express.urlencoded({ extended: true })); // parse urlencoded request bodies
 app.use(express.static("public")); // serve files from public statically
+
+
+
+
+/////////////////////////////////////////////////
+// Routes
+/////////////////////////////////////////////////
+app.use("/movies", moviesController);
 
 
 

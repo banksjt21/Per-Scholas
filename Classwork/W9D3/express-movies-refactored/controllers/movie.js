@@ -10,7 +10,7 @@ const Movie   = require("../models/movie");
 ////////////////////////////////////////////
 // Create Route
 ////////////////////////////////////////////
-const router  = express.Router();
+const router  = express.Router(); // middleware
 
 
 
