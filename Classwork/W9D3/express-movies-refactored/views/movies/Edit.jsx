@@ -28,7 +28,7 @@ class Edit extends React.Component {
 
                         {
                             movie.watchAgain ?
-                                <label>WATCH AGAIN :<input type="checkbox" name="watchAgain" checked /></label> :
+                                <label>WATCH AGAIN :<input type="checkbox" name="watchAgain" defaultChecked /></label> :
                                 <label>WATCH AGAIN :<input type="checkbox" name="watchAgain" /> </label>
                         }
                     </fieldset>
