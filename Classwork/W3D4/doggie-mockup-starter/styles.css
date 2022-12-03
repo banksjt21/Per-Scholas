@@ -1,0 +1,124 @@
+* {
+    margin : 0;
+    padding: 0;
+}
+
+body {
+    /* height: 100vh; */
+    min-height: 100vh;
+    background-image:url("img/rainbow-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 1.5vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    background-color: white;
+    height: 95vh;
+    width: 60vw;
+    margin: 0 auto;
+}
+
+header {
+    background-color: black;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    margin-bottom: 50px;
+}
+
+h1 {
+    color: white;
+    font-family: 'Comic Sans MS';
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: normal;
+}
+
+ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+ul li {
+    display: inline;
+    font-weight: bold;
+}
+
+.blue-bar {
+    background-color: blue;
+    height: 10px;
+}
+
+.dog-photo {
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+}
+
+#main-content{
+    display: flex;
+    justify-content: space-evenly;
+    row-gap: 60px;
+    padding-bottom: 60px;
+}
+
+button {
+    background-color: skyblue;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 20px 70px;
+    width: 100%;
+}
+
+
+ol li {
+    list-style-position: inside;
+    margin-bottom: 10px;
+}
+
+.dog-info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-italic {
+    font-style: italic;
+}
+
+footer {
+    text-align: center;
+}
+
+.social-links {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.link {
+    color: skyblue;
+    font-weight: bold;
+}
+
+footer img {
+    width: 80px
+}
