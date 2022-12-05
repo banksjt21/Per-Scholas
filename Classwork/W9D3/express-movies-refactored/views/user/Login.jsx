@@ -9,6 +9,7 @@ class Login extends React.Component {
         return (
             <DefaultLayout title="User Login">
                 <div>
+                    {/* <a href="/movies/">View Movies List</a><br /><br /> */}
                     <form action="/user/login" method="post">
                         <fieldset>
                             <legend>User Login</legend>
@@ -17,6 +18,7 @@ class Login extends React.Component {
                             <input type="submit" value="Login" />
                         </fieldset>
                     </form>
+                    {/* <a href="/user/signup">Need an account? Signup here</a> */}
                 </div>
             </DefaultLayout>
         )

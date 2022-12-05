@@ -40,7 +40,8 @@ app.use("/movies", moviesController); // send all "/movies" routes to movies rou
 app.use("/user",   userController); // send all "/user" routes to user router
 
 app.get("/", (req, res) => {
-    res.send("your server is running... better catch it.");
+    // res.send("your server is running... better catch it.");
+    res.render("Index.jsx");
 });
 
 
