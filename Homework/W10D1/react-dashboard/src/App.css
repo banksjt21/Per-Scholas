@@ -1,0 +1,183 @@
+/*  ===========================================================================
+//  GLOBAL
+===========================================================================  */
+* {
+	box-sizing: border-box;
+	color: white;
+}
+
+
+
+
+/*  ===========================================================================
+//  VARIABLES
+===========================================================================  */
+:root {
+	--border: 1px solid black;
+	--bgLight: rgb(0, 0, 0, 0.15);
+	--bgDark: rgb(0, 0, 0, 0.35);
+	--textLight: #42425c;
+	--textDark: #242433;
+	--padding: 30px;
+	--borderCurved: 10px;
+}
+
+
+
+
+/*  ===========================================================================
+//  TAGS
+===========================================================================  */
+body {
+	background-color: #42425c;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+h1 {
+	display: inline-block;
+	color: var(--textDark);
+}
+
+h2 {
+	font-size: 13px;
+	text-transform: uppercase;
+	color: var(--textLight);
+}
+
+
+
+
+/*  ===========================================================================
+//  DASHBOARD
+===========================================================================  */
+#dashboard {
+	padding: var(--padding);
+	background-color: var(--bgLight);
+	border-radius: var(--borderCurved);
+}
+
+
+
+
+/*  ===========================================================================
+//  HEADER
+===========================================================================  */
+header {
+	display: flex;
+	align-items: center;
+}
+
+
+/*  -----------------------------------
+//  Logo
+-----------------------------------  */
+.logo {
+	height: 40px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+/*  -------------------------------  */
+
+
+
+
+/*  ===========================================================================
+//  MAIN
+===========================================================================  */
+main {
+	display: flex;
+	height: 600px;
+}
+
+
+
+
+/*  =======================================================
+//  SIDEBAR
+=======================================================  */
+aside {
+	width: 300px;
+	background-color: var(--bgDark);
+	margin-right: 15px;
+	padding: var(--padding);
+	border-radius: var(--borderCurved);
+}
+
+aside ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+aside ul li {
+	margin-bottom: 8px;
+	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+aside ul li .fa {
+	margin-right: 10px;
+	width: 20px;
+	text-align: right;
+	color: var(--textLight);
+}
+
+
+
+
+/*  =======================================================
+//  WIDGETS
+=======================================================  */
+article {
+	background-color: var(--bgDark);
+	padding: var(--padding);
+	border-radius: var(--borderCurved);
+}
+
+#widgets {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	gap: 15px;
+}
+
+.widgetSmall {
+	flex-grow: 1;
+}
+
+.widgetLarge {
+	width: 100%;
+}
+
+.result {
+	font-size: 36px;
+	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: bold;
+}
+
+
+
+
+/*  ===========================================================================
+//  FOOTER
+===========================================================================  */
+footer p, footer a {
+	color: var(--textDark);
+	font-weight: bold;
+}
