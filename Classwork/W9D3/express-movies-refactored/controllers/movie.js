@@ -15,6 +15,21 @@ const router  = express.Router(); // middleware
 
 
 
+////////////////////////////////////////
+// Router Middleware
+////////////////////////////////////////
+// Authorization Middleware
+router.use((req, res, next) => {
+    if (req.session.loggedIn) {
+      next();
+    } else {
+      res.redirect("/user/login");
+    }
+  });
+
+
+
+
 ////////////////////////////////////////////
 // Routes
 ////////////////////////////////////////////
@@ -42,7 +57,7 @@ const router  = express.Router(); // middleware
 // Index route
 router.get("/", async (req, res) => {
     try {
-        const movies = await Movie.find({});
+        const movies = await Movie.find({ username: req.session.username });
         res.render("movies/Index", { movies });
     } catch (err) {
         res.json({ err });
@@ -92,13 +107,19 @@ router.put("/:id", async (req, res) => {
 // Create
 router.post("/", async (req, res) => {
     try {
+        // check if the watchAgain property should be true or false
         req.body.watchAgain = req.body.watchAgain === "on" ? true : false; 
+        // add username to req.body to track related user
+        req.body.username = req.session.username;
+        // create the New movie
         req.body.cast = req.body.cast.split("|");
         console.log(req.body);
         const createdMovie = await Movie.create(req.body);
+        // redirect user to Index page if successfully created item
         res.redirect("/movies");
     } catch (error) {
         console.log(error);
+        // send error as json
         res.json({ error });
     }
 });

@@ -7,7 +7,8 @@ class Index extends React.Component {
         // const movies     = this.props.movies; // Another way
         return (
             <DefaultLayout>
-                <a href="/user/signup">Create Account</a><br />
+                {/* <a href="/user/signup">Create Account</a><br /> */}
+                <a href="/user/logout"><button>Logout</button></a><br />
                 <a href="/movies/new">Add New Movie</a>
                 <div>
                     {

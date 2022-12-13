@@ -22,7 +22,8 @@ const movieSchema = new Schema({
     director: { type: String, required: true },
     rating: String,
     watchAgain: Boolean,
-    cast: [{ type: String }]
+    cast: [{ type: String }],
+    username: String
 });
 
 // make movie model
