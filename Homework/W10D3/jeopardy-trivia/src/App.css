@@ -1,0 +1,261 @@
+/*  ===========================================================================
+//  VARIABLES
+===========================================================================  */
+:root {
+	--colorPink  : #fe938c;
+	--colorBlue  : #6191b5;
+	--colorRed   : #e71d37;
+	--colorYellow: #ead27a;
+	--colorNavy  : #1a2650;
+
+	--spacing    : 20px;
+}
+
+
+
+
+/*  ===========================================================================
+//  TAGS
+===========================================================================  */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #3e5f73;
+}
+
+button {
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+}
+
+
+
+/*  ===========================================================================
+//  JEOPARDY
+===========================================================================  */
+#jeopardy {
+	display: flex;
+	margin: 0 auto;
+	flex-direction: column;
+	align-items: center;
+	width: 1000px;
+	/* background-color: #3e5f73; */
+	color: white;
+}
+
+/* #jeopardy * {
+	border: 1px solid black;
+} */
+
+
+
+
+/*  ===========================================================================
+//  HEADER
+===========================================================================  */
+header {
+	display: flex;
+	align-items: center;
+	margin-bottom: var(--spacing);
+}
+
+h1 {
+	font-size: 48px;
+}
+
+
+/*  -----------------------------------
+//  Logo
+-----------------------------------  */
+.logo {
+	height: 40px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+/*  -------------------------------  */
+
+
+
+
+/*  ===========================================================================
+//  SCORE
+===========================================================================  */
+/* #scoreAndButtons {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: var(--spacing);
+} */
+
+#score {
+	margin-bottom: var(--spacing);
+}
+
+#scoreButtons {
+	display: flex;
+	gap: 10px;
+	margin-bottom: var(--spacing);
+}
+
+
+
+
+/*  ===========================================================================
+//  PLAY
+===========================================================================  */
+#play {
+	margin-bottom: var(--spacing);
+}
+
+#play .title {
+	display: block;
+	margin-right: 0;
+}
+
+#playButton {
+	margin-bottom: var(--spacing);
+}
+
+
+
+
+/*  ===========================================================================
+//  TRIVIA
+===========================================================================  */
+#trivia {
+	margin-bottom: var(--spacing);
+}
+
+
+
+
+/*  ===========================================================================
+//  REVEAL
+===========================================================================  */
+#reveal button {
+	color: white;
+	border-radius: 0;
+	padding: 20px 60px;
+}
+
+
+
+
+/*  ===========================================================================
+//  GLOBAL CLASSES
+===========================================================================  */
+.centerText {
+	text-align: center;
+}
+
+.title {
+	color:var(--colorYellow);
+	font-weight: bold;
+	font-size: 32px;
+	display: block;
+}
+
+.value {
+	font-size: 24px;
+}
+
+.colorPink {
+	background-color: var(--colorPink);
+}
+
+.colorBlue {
+	background-color: var(--colorBlue);
+}
+
+.colorRed {
+	background-color: var(--colorRed);
+}
+
+.colorYellow {
+	background-color: var(--colorYellow);
+}
+
+.colorNavy {
+	background-color: var(--colorNavy);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+.App {
+	text-align: center;
+}
+
+.App-logo {
+	height: 40vmin;
+	pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+		height: 60px;
+		width: 60px;
+	}
+}
+
+.App-header {
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+
+.App-link {
+	color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+} */
