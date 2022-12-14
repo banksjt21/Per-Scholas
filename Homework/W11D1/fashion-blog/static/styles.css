@@ -1,0 +1,115 @@
+html {
+    border-left: 5px;
+    border-left-style: solid;
+    border-left-color: lightgray;
+}
+
+body {
+    min-height: 100vh;
+    max-width: 1000px;
+    font-family: sans-serif;
+    margin: 0 auto;
+}
+
+header, main, footer {
+    padding: 1rem 2rem;
+}
+
+article {
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 2rem;
+    margin-bottom: 4rem;
+}
+
+article p::first-letter {
+    color: lightgray;
+    font-size: 96px;
+    font-family: 'Times New Roman', Times, serif;
+    float: left;
+    margin-right: 10px;
+    line-height: 60px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+article p {
+    line-height: 24px;
+    color: gray;
+}
+
+h1 {
+    font-size: 72px;
+    color: tomato;
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 30px;  
+}
+
+h3 {
+    font-size: 36px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+img {
+    width: 100%;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav ul li a {
+    color: lightgray;
+}
+
+header nav ul li a:hover {
+    color: tomato;
+}
+
+footer nav ul li a {
+    color: tomato;
+    text-decoration: none;
+}
+
+footer nav ul li a:hover {
+    color: lightgray;
+    text-decoration: none;
+}
+
+footer ul {
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 30px;
+}
+
+.date {
+    font-size: 24px;
+    color: gray;
+}
+
+.display-flex {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.continue {
+    padding-top: 10px;
+    color: tomato;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.continue:hover {
+    color:lightgray;
+}
+
+.copyright {
+    color: lightgray;
+}
