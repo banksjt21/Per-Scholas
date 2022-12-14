@@ -30,6 +30,7 @@ function validCard(cardNum) {
 
     let result = total % 10 == 0 ? true : false;
     console.log(result);
+    return result;
 }
 
 validCard(1234567890123456); //should be false
