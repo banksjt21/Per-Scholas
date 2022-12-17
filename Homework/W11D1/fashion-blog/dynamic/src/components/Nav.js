@@ -1,13 +1,15 @@
+import { Link } from 'react-router-dom';
+
 export default function Nav() {
     return (
         <nav aria-label="Main Navigation" role="navigation">
             <ul>
-                <li><a href="women">Women's</a></li>
-                <li><a href="men">Men's</a></li>
-                <li><a href="street">On the Street</a></li>
-                <li><a href="catwalk">The Catwalk</a></li>
-                <li><a href="adwatch">AdWatch</a></li>
-                <li><a href="about">About</a></li>
+                <li><Link to="/">Women's</Link></li>
+                <li><Link to="/">Men's</Link></li>
+                <li><Link to="/">On the Street</Link></li>
+                <li><Link to="/">The Catwalk</Link></li>
+                <li><Link to="/">AdWatch</Link></li>
+                <li><Link to="/">About</Link></li>
             </ul>
         </nav>
     )
