@@ -22,7 +22,7 @@ function App() {
 
 	const getTrivia = async () => {
 		try {
-			const api_url  = "http://jservice.io/api/random";
+			const api_url  = "https://jservice.io/api/random";
 			const response = await fetch(api_url);
 			const data     = await response.json();
 			setTrivia(data[0]);
